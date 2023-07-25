@@ -37,13 +37,13 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         '16': ['Fractal engine', 'THE Even truer and elder Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process'],
         '17': ['Javascript console', 'Mind opening', 'True evil process'],
         '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process'],
-        '19': ['Cortex baker', 'The ancient cookie dragon', null],
-        '20': ['You', 'A book', null]
+        '19': ['Cortex baker', 'The ancient cookie dragon', 'Super Brainz'],
+        '20': ['You', 'A book', 'I']
     };
 
     const sugarLumpMinTime = {
         '1': 'Sugar lump farming 101',
-        '2': 'Enchanted Lump-growing scroll',
+        '2': 'Ancient Lump-growing scroll',
         '3': 'Infinite knowledge',
         '4': 'Auto-clicking process',
         '5': 'Faster and lumpier clicking process'
@@ -59,6 +59,13 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     MoreHeavenlyUpgradesRemastered.init = function() {
         MoreHeavenlyUpgradesRemastered.isLoaded = 1;
         Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
+        /*let keys1 = Object.keys(sugarLumpMinTime);
+        let keys2 = Object.keys(buildingTiers);
+        keys1.forEach((e) => Game.Lock(sugarLumpMinTime[e]))
+        keys2.forEach((e) => { 
+            Game.Lock(sugarLumpMinTime[e][1]);
+            Game.Lock(sugarLumpMinTime[e][2]);
+        });*/
         //Game.registerHook('check', function () {
         //    Game.Notify('Test', `${Game.Has('Call on the luck')}`, [19, 7], 6);
         //});
@@ -228,62 +235,71 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //Sugar Lump growing process
         // TIER 1
-        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[1], `This is the start of your ascension to become a true sugar lump farmer. The minimum time to grow a sugar lump is now reduced to 1 hour. Also ripen and fall time are dependant on maturing time`, 2.5E1, [15, 9], -75, -1540, ['Sucralosia Inutilis']);
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[1], `This is the start of your ascension to become a true sugar lump farmer. The minimum time to grow a sugar lump is now reduced to 1 hour. Also ripen and fall time are dependant on maturing time`, 2.5E1, [15, 9], -100, -1500, ['Sucralosia Inutilis']);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][1], `Sugar lumps mature <b>${1*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E2, [10, 9], -100, -1550, [sugarLumpMinTime[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][2], `Sugar lumps mature <b>${1*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[1][0]}`, 2.5E2, [1, 1], -125, -1540, [buildingTiers[1][1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][1], `Sugar lumps mature <b>${2*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E3, [10, 9], -150, -1550, [buildingTiers[1][2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][2], `Sugar lumps mature <b>${2*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[2][0]}`, 2.5E3, [1, 1], -175, -1540, [buildingTiers[2][1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][1], `Sugar lumps mature <b>${3*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E4, [10, 9], -200, -1550, [buildingTiers[2][2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][2], `Sugar lumps mature <b>${3*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[3][0]}`, 2.5E4, [1, 1], -225, -1540, [buildingTiers[3][1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][1], `Sugar lumps mature <b>${4*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E5, [10, 9], -250, -1550, [buildingTiers[3][2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][2], `Sugar lumps mature <b>${4*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[4][0]}`, 2.5E5, [1, 1], -275, -1540, [buildingTiers[4][1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][1], `Sugar lumps mature <b>${5*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E6, [10, 9], -300, -1550, [buildingTiers[4][2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][2], `Sugar lumps mature <b>${5*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[5][0]}`, 2.5E6, [1, 1], -325, -1540, [buildingTiers[5][1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][1], `Sugar lumps mature <b>${1*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E2, [0, 0], -750, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][2], `Sugar lumps mature <b>${1*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[1][0]}`, 2.5E2, [0, 1], -650, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][1], `Sugar lumps mature <b>${2*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E3, [1, 0], -450, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][2], `Sugar lumps mature <b>${2*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[2][0]}`, 2.5E3, [1, 1], -350, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][1], `Sugar lumps mature <b>${3*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E4, [2, 0], -150, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][2], `Sugar lumps mature <b>${3*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[3][0]}`, 2.5E4, [2, 1], -50, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][1], `Sugar lumps mature <b>${4*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E5, [3, 0], 150, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][2], `Sugar lumps mature <b>${4*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[4][0]}`, 2.5E5, [3, 1], 250, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][1], `Sugar lumps mature <b>${5*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E6, [4, 0], 450, -1700, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][2], `Sugar lumps mature <b>${5*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[5][0]}`, 2.5E6, [4, 1], 550, -1700, [sugarLumpMinTime[1]]);
 
         //TIER 2
-
-        CCSE.NewHeavenlyUpgrade('Lofi hip-hop beats to chill and grow to', "Sugar lumps mature <b>21 minutes</b> sooner.<q>Plants do actually grow better when listening to some sweet tunes</q>", 500000000, [28, 6], -250, -1540, ['Sweet and tasty fertilizer']);
-
-
-        //TIER 2
-        CCSE.NewHeavenlyUpgrade('Ancient lump-growing scroll', "You found this weird scroll, maybe it has some useful information<br><br>The minimum time for lumps to mature now is 7 minutes<q>What could posibly go wrong?</q>", 1000, [28, 26], -300, -1760, ['Lofi hip-hop beats to chill and grow to']);
-
-        CCSE.NewHeavenlyUpgrade('A nice fairy', "Sugar lumps mature <b>24 minutes</b> sooner.<q>The scroll gave you a ritual to summon a fairy, she will cast some spells in exchange of heavenly chips</q>", 1500000000, [26, 11], -390, -1740, ['Ancient lump-growing scroll']);
-        CCSE.NewHeavenlyUpgrade('Sugar magical growing process', "Each Wizard tower makes sugar lumps mature <b>2 seconds</b> sooner.<q>Wizards can power up the fairy, as it turns out</q>", 1200000000, [17, 17], -390, -1650, ['A nice fairy']);
-
-
-        CCSE.NewHeavenlyUpgrade('Lump-growing calculator', "Sugar lumps mature <b>27 minutes</b> sooner.<q>Turns out all was in the numbers, the scroll had mathematical formulas to grow sugar lumps even faster</q>", 1500000000, [11, 10], -260, -1850, ['Ancient lump-growing scroll']);
-        CCSE.NewHeavenlyUpgrade('Lump banking process', "Each Bank makes sugar lumps mature <b>1.5 seconds</b> sooner.<q>The interests created by the banks somehow help us calculate better...</q>", 1000000000, [15, 17], -170, -1870, ['Lump-growing calculator']);
-
-
-        CCSE.NewHeavenlyUpgrade('Lump-growing potion', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>In the scroll there was also a formula for a potion that makes lumps grow faster!</q>", 1500000000, [33, 11], -370, -1850, ['Ancient lump-growing scroll', 'A nice fairy', 'Lump-growing calculator']);
-        CCSE.NewHeavenlyUpgrade('Overclocked potion crafting process', "Each Alchemy lab (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Combining the power of factories and alchemy we can speed up the potion-making</q>", 1400000000, [6, 17], -550, -1790, ['Overclocked potion making process']);
-
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[2], `You are an adept sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E7, [15, 9], -100, -1900, [buildingTiers[1][1], buildingTiers[1][2], buildingTiers[2][1], buildingTiers[2][2], buildingTiers[3][1], buildingTiers[3][2], buildingTiers[4][1], buildingTiers[4][2], buildingTiers[5][1], buildingTiers[5][2]]);
+        
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][1], `Sugar lumps mature <b>${11*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E8, [6, 0], -750, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][2], `Sugar lumps mature <b>${11*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[6][0]}`, 2.5E8, [6, 1], -650, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][1], `Sugar lumps mature <b>${12*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E9, [7, 0], -450, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][2], `Sugar lumps mature <b>${12*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[7][0]}`, 2.5E9, [7, 1], -350, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][1], `Sugar lumps mature <b>${13*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E10, [8, 0], -150, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][2], `Sugar lumps mature <b>${13*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[8][0]}`, 2.5E10, [8, 1], -50, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][1], `Sugar lumps mature <b>${14*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E11, [9, 0], 150, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][2], `Sugar lumps mature <b>${14*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[9][0]}`, 2.5E11, [9, 1], 250, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][1], `Sugar lumps mature <b>${15*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E12, [10, 0], 450, -2100, [sugarLumpMinTime[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][2], `Sugar lumps mature <b>${15*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[10][0]}`, 2.5E12, [10, 1], 550, -2100, [sugarLumpMinTime[2]]);
 
         //TIER 3
-        CCSE.NewHeavenlyUpgrade('Enchanted Lump-growing scroll', "A shining scroll lies before you, it emanates great power, will you take it?<br><br>The minimum time for lumps to mature now is 4 minutes<q>Your legs feel shaky</q>", 10000, [21, 7], -450, -1975, ['Lump-growing potion']);
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[3], `You are an advanced sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E13, [15, 9], -100, -2300, [buildingTiers[6][1], buildingTiers[6][2], buildingTiers[7][1], buildingTiers[7][2], buildingTiers[8][1], buildingTiers[8][2], buildingTiers[9][1], buildingTiers[9][2], buildingTiers[10][1], buildingTiers[10][2]]);
+        
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][1], `Sugar lumps mature <b>${11*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E14, [11, 0], -750, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][2], `Sugar lumps mature <b>${11*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[11][0]}`, 2.5E14, [11, 1], -650, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][1], `Sugar lumps mature <b>${12*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E15, [12, 0], -450, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][2], `Sugar lumps mature <b>${12*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[12][0]}`, 2.5E15, [12, 1], -350, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][1], `Sugar lumps mature <b>${13*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E16, [13, 0], -150, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][2], `Sugar lumps mature <b>${13*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[13][0]}`, 2.5E16, [13, 1], -50, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][1], `Sugar lumps mature <b>${14*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E17, [14, 0], 150, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][2], `Sugar lumps mature <b>${14*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[14][0]}`, 2.5E17, [14, 1], 250, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][1], `Sugar lumps mature <b>${15*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E18, [15, 0], 450, -2500, [sugarLumpMinTime[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][2], `Sugar lumps mature <b>${15*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[15][0]}`, 2.5E18, [15, 1], 550, -2500, [sugarLumpMinTime[3]]);
 
-        CCSE.NewHeavenlyUpgrade('Praying to the elder ones', "Sugar lumps ripen and mature <b>1 hour</b> sooner.<q>You just need to open the doors of 1 temple to awaken this old power... <br> there is someone inside?</q>", 500000000000, [13, 11], -600, -1975, ['Enchanted Lump-growing scroll']);
-        CCSE.NewHeavenlyUpgrade('Praying process', "Each temple (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>The more temples the more gods we can pray to</q>", 1100000000, [16, 17], -600, -1870, ['Praying to the elder ones']);
+        //TIER 4
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[4], `You are an expert sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E19, [15, 9], -100, -2700, [buildingTiers[11][1], buildingTiers[11][2], buildingTiers[12][1], buildingTiers[12][2], buildingTiers[13][1], buildingTiers[13][2], buildingTiers[14][1], buildingTiers[14][2], buildingTiers[15][1], buildingTiers[15][2]]);
+        
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][1], `Sugar lumps mature <b>${16*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E20, [16, 0], -750, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][2], `Sugar lumps mature <b>${16*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[16][0]}`, 2.5E20, [11, 1], -650, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][1], `Sugar lumps mature <b>${17*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E21, [17, 0], -450, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][2], `Sugar lumps mature <b>${17*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[17][0]}`, 2.5E21, [12, 1], -350, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][1], `Sugar lumps mature <b>${18*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E22, [13, 0], -150, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][2], `Sugar lumps mature <b>${18*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[18][0]}`, 2.5E22, [13, 1], -50, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][1], `Sugar lumps mature <b>${19*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E23, [14, 0], 150, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][2], `Sugar lumps mature <b>${19*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[19][0]}`, 2.5E23, [14, 1], 250, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][1], `Sugar lumps mature <b>${20*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E24, [15, 0], 450, -2900, [sugarLumpMinTime[4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][2], `Sugar lumps mature <b>${20*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[20][0]}`, 2.5E24, [15, 1], 550, -2900, [sugarLumpMinTime[4]]);
 
-        //GODS
-        CCSE.NewHeavenlyUpgrade('Benevolent elder Lump god', "Sugar lumps ripen <b>1 hour</b> sooner.<q>Will you accept the gift of this deity?</q>", 777000000000, [2, 7], -700, -2025, ['Praying to the elder ones']);
+        //TIER 5
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[5], `Your minimum time to mature lumps is reduced by <b>${second/1000} second<b> for every upgrade level of your buildings, down to a cap of one second`, 2.5E25, [15, 9], -100, -3100, [buildingTiers[16][1], buildingTiers[16][2], buildingTiers[17][1], buildingTiers[17][2], buildingTiers[18][1], buildingTiers[18][2], buildingTiers[19][1], buildingTiers[19][2], buildingTiers[20][1], buildingTiers[20][2]]);
 
-        CCSE.NewHeavenlyUpgrade('Elder Lump demon', "Sugar lumps mature <b>1 hour</b> sooner.<q>They seem nice :D</q>", 666000000000, [11, 8], -700, -1925, ['Praying to the elder ones']);
-        CCSE.NewHeavenlyUpgrade('True Elder Lump demon', "Sugar lumps mature <b>1 hour</b> sooner.<q>TURNS OUT THE LAST ONE WAS A FAKER</q>", 6660000000000, [29, 6], -725, -1825, ['Elder Lump demon']);
-        CCSE.NewHeavenlyUpgrade('Even Elder Lump demon', "Sugar lumps mature <b>1 hour</b> sooner.<q>The las one wasn't fake, but this one is much elder and wiser</q>", 66600000000000, [21, 25], -775, -1725, ['True Elder Lump demon']);
-        CCSE.NewHeavenlyUpgrade('THE Even truer and elder Lump demon', "Sugar lumps mature <b>1 hour</b> sooner.<q>This trully has to be the las one of the lot</q>", 666000000000000, [21, 32], -875, -1625, ['Even Elder Lump demon']);
-        CCSE.NewHeavenlyUpgrade('True evil process', "Each JS Console (up to 900) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Hacking the game is trully evil and you should feel bad for it</q>", 2100000000, [32, 17], -1025, -1525, ['THE Even truer and elder Lump demon']);
 
-        //Eternal Knowledge                                                                                                                                                                      
-        CCSE.NewHeavenlyUpgrade('Mind opening', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>Praying to both deities gave you a mindblowing knowledge. Will you use it right?</q>", 999999999990, [27, 2], -800, -1975, ['Elder Lump demon', 'Benevolent elder Lump god']);
-        CCSE.NewHeavenlyUpgrade('Ilumination-based growing process', "Each Prism (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>One might say you've become enlightened<br><br>And the lump as well, the light from the prisms help it's growth</q>", 1800000000, [14, 17], -920, -2000, ['Mind opening']);
+
+        /*
         //True Santa
         CCSE.NewHeavenlyUpgrade('Santa-summoning spell', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>Apparently this scroll had the ritual to summon true santa, he promises knowledge in exchange of chips</q>", 999999999990, [19, 10], -600, -2175, ['Enchanted Lump-growing scroll']);
         Game.last.showIf = function() { return (Game.Achievements["All hail Santa"].won == 1); };
         CCSE.NewHeavenlyUpgrade('Santa\'s heavenly legacy', "Final claus will accompany you between ascensions<q>You have earned my trust</q>", 1423287606340478, [19, 9], -687, -2138, ['Santa-summoning spell']);
-
         //Ancient dragon
         CCSE.NewHeavenlyUpgrade('The ancient cookie dragon', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>They claim to know the secrets to grow Sugar lumps efficiently, but at a price</q>", 999999999990, [30, 12], -450, -2175, ['Enchanted Lump-growing scroll']);
         Game.last.showIf = function() { return (Game.Achievements["Here be dragon"].won == 1); };
@@ -292,21 +308,8 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         CCSE.NewHeavenlyUpgrade('Dragon in training', "Krumblor starts halfway into their training<q>This tooth fell off when they grew up</q>", everythingBasePrice * 100, [30, 15], -150, -2190, ['Cookie hatchling']);
         CCSE.NewHeavenlyUpgrade('Dragon in baking', "Bake Krumblor<q>Delicious!</q>", everythingBasePrice * 50, [30, 14], -50, -2160, ['Dragon in training']);
         CCSE.NewHeavenlyUpgrade('Krumblor, The one and only', "Train Krumblor to their full potential<q>You got here many times already, no need to repeat it</q>", everythingBasePrice * 200, [31, 14], 50, -2170, ['Dragon in baking']);
-
-
-        //TIER 4 --> TELEPORTATION <--
-        CCSE.NewHeavenlyUpgrade('Misterious portal', "With the knowledge from the eldest ones you manage to open a rift in time and space to aquire the ultimate secrets of growing <b>Sugar Lumps</p><q>Will there be a way back?</q>", 1000000000, [11, 5], -700, -2300, ['Mind opening', 'Santa-summoning spell', 'The ancient cookie dragon']);
-        CCSE.NewHeavenlyUpgrade('Other-worldly lump-growing process', "Each portal (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>You are not really sure how this works but it does somehow</q>", 1500000000, [7, 17], -795, -2250, ['Misterious portal']);
-        CCSE.NewHeavenlyUpgrade('Idle lump-growing process', "Each Idleverse makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>The portals brought us here... might as well use this place to grow the lump?</q>", 2200000000, [33, 17], -870, -2200, ['Other-worldly lump-growing process']);
-        CCSE.NewHeavenlyUpgrade('Intergalactic Extrauniversal investigation process', "Each Shipment (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Now that you discovered these strage multiverses... Explore them to speed up the lump... maybe? we are not really sure how this works anymore</q>", 1300000000, [5, 17], -930, -2130, ['Idle lump-growing process']);
-        CCSE.NewHeavenlyUpgrade('Multiversal antimatterial process', "Each Antimater condenser (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Your investigations have concluded that some of these...<br>planes of existance?<br>multiverses?<br>verses?<br>Anyway, some of them are entirely made out of antimatter<br>Knowing this may be useful to unravel the ultimate secrets of lump-growing<br><br>maybe</q>", 1700000000, [13, 17], -995, -2060, ['Intergalactic Extrauniversal investigation process']);
-        CCSE.NewHeavenlyUpgrade('Extreme lump-growing with recursive lumping and lump recursiving process', "Each Fractal engine (up to 600) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Okay, hear me out for a second here, turns out the antimatter particles are made of smaller antimatter particles and this happens infinitely.<br>Bring in the engines and we can start growing some lumps WHOOO</q>", 2000000000, [20, 17], -1070, -1950, ['Multiversal antimatterial process']);
-        CCSE.NewHeavenlyUpgrade('Sheer luck lump-growing process', "Each Chancemaker (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>What are the odds of this worknig out?</q>", 1900000000, [19, 17], -1170, -1850, ['Extreme lump-growing with recursive lumping and lump recursiving process']);
-
-
-        CCSE.NewHeavenlyUpgrade('Infinite knowledge', "At the other side of the portal there is a.. Cat?<br>They seem to know you,<br>to know <b>everything</b><br>They ask you to forfeit a small amount of chips for all their knowledge<br><br>Also the minimum time for lumps to mature now is 1 minute<q>They are the key to the multiverse's secrets</q>", 10000000000, [26, 7], -700, -2450, ['Misterious portal']);
-        CCSE.NewHeavenlyUpgrade('Time-altering process', "Each Time machine (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>The cat gave you some formulas, that, combined with your flux capacitors would speed up the process of growing lumps</q>", 1800000000, [8, 17], -600, -2450, ['Infinite knowledge']);
-
+*/
+        /*
         var secretPrice = Game.Upgrades["Kitten helpers"].basePrice +
             Game.Upgrades["Kitten workers"].basePrice +
             Game.Upgrades["Kitten engineers"].basePrice +
@@ -331,8 +334,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         CCSE.NewHeavenlyUpgrade('Auto-clicking process', "The minimum time for a lump to mature is reduced by <b>1 second</b> for every <b>100 cursors owned<b/><br>But it will never go any lower than 1 second<q>You thought I wouldn\'t do anything with cursors did you?</q>", 5000000000000000000, [0, 17], -650, -3000, ['The real secret...']);
 
         CCSE.NewHeavenlyUpgrade('Faster and lumpier clicking process', "The minimum time for a lump to mature is reduced by <b>1 second</b> for every <b>2 cursor levels<b/><br>But it will never go any lower than 1 second<q>You thought I wouldn\'t do anything with cursors did you?</q>", 69000000000000000000000000, [1, 6], -630, -3200, ['Auto-clicking process']);
-
-
+*/
 
 
         //Game.customShimmerTypes[key].getTimeMod --> adjust golden cookie spawn rate, <1 equals faster
@@ -349,7 +351,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                 let objKeys = Object.keys(Game.Objects);
                 let sum = 0;
                 objKeys.forEach((e) => sum += Game.Objects[e].level);
-                return Math.floor(sum);
+                return Math.floor(sum) * second;
               })();
             minMatureTime = Math.max(minMatureTime, second);
 
@@ -363,7 +365,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             Game.lumpOverripeAge = Math.min(Game.lumpOverripeAge, Game.lumpRipeAge * 2);
         });
     }
-
+/*
     var buy50ofEach = function() {
         for (let o = 0; o < Game.ObjectsById.length; o++) {
             Game.ObjectsById[o].getFree(50);
@@ -461,20 +463,20 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                 if (Game.Has('Permanent Kitten executives')) {
                     Game.Upgrades["Kitten executives"].bought = 1;
                 }
-
+                
             };
 
         }
-        Game.registerHook('cps', function(cps) {
-            let cpsMult = 1;
-            if (Game.Has('Divine gains')) cpsMult *= pointOnePercent(Game.goldenClicks);
-            if (Game.Has('Divine buildings')) cpsMult *= pointOnePercent(Game.BuildingsOwned);
-            if (Game.Has('Divine round numbers') && Game.BuildingsOwned % 10 == 0) cpsMult *= 2;
-            if (Game.Has('Divine savings') && Game.Objects['Farm']?.minigame?.harvestsTotal) cpsMult *= 1 + (Game.Objects['Farm'].minigame.harvestsTotal / 1000);
-            return cps * cpsMult;
-        });
-    });
 
+    });
+    */
+   Game.registerHook('cps', function(cps) {
+       if (Game.Has('Divine gains')) cps *= pointOnePercent(Game.goldenClicks);
+       if (Game.Has('Divine buildings')) cps *= pointOnePercent(Game.BuildingsOwned);
+       if (Game.Has('Divine round numbers') && Game.BuildingsOwned % 10 == 0) cps *= 2;
+       if (Game.Has('Divine savings') && Game.Objects['Farm']?.minigame?.harvestsTotal) cps *= 1 + (Game.Objects['Farm'].minigame.harvestsTotal / 1000);
+       return cps;
+    });
 
 
 
