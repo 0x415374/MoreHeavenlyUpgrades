@@ -1,14 +1,64 @@
+//new Game.Upgrade('Lucky payout',loc("<b>+%1%</b> prestige level effect on CpS.<br><b>+%2%</b> golden cookie effect duration.<br><b>+%3%</b> golden cookie lifespan.",[1,1,1])+'<q>This upgrade took an oath of complete seclusion from the rest of the world and only appears when your prestige level contains four 7\'s.</q>',77777777,[24,15]);Game.last.pool='prestige';Game.last.parents=['Lucky number','Decisive fate'];Game.last.showIf=function(){return (Math.ceil(((Game.prestige+'').split('7').length-1))>=4);};
 //Created by 0x415374
-//Based on the work of RubyChan42
-if (MoreHeavenlyUpgrades === undefined) var MoreHeavenlyUpgrades = {};
-MoreHeavenlyUpgrades.name = 'More heavenly upgrades';
-MoreHeavenlyUpgrades.version = '2.00';
-MoreHeavenlyUpgrades.GameVersion = '2.052';
+//Based on MoreHeavenlyUpgrades by RubyChan42
 
-MoreHeavenlyUpgrades.launch = function() {
-    MoreHeavenlyUpgrades.init = function() {
-        MoreHeavenlyUpgrades.isLoaded = 1;
-        Game.Notify('More heavenly upgrades loaded', '', [19, 7], 6);
+if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
+MoreHeavenlyUpgradesRemastered.name = 'More heavenly upgrades Remastered';
+MoreHeavenlyUpgradesRemastered.version = '2.00';
+MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
+
+//debug
+//Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
+
+MoreHeavenlyUpgradesRemastered.launch = function() {
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const scalingBaseReduce = 250;
+    const staticBasereduce = minute * 3;
+
+    //Map that contains building tier as keys which maps to an enum of [name, staticReducer, scalingReducer]
+    const buildingTiers = {
+        '1': ['Cursor', 'Lump rubbers', 'Velvet gloves'],
+        '2': ['Grandma', 'Lump caregiver', 'My lovely sugar lumps'],
+        '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process'],
+        '4': ['Mine', 'Sugar water', 'Dirt extraction process'],
+        '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process'],
+        '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process'],
+        '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process'],
+        '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process'],
+        '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process'],
+        '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process'],
+        '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process'],
+        '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process'],
+        '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process'],
+        '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process'],
+        '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process'],
+        '16': ['Fractal engine', 'THE Even truer and elder Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process'],
+        '17': ['Javascript console', 'Mind opening', 'True evil process'],
+        '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process'],
+        '19': ['Cortex baker', 'The ancient cookie dragon', null],
+        '20': ['You', 'A book', null]
+    };
+
+    const sugarLumpMinTime = {
+        '1': 'Sugar lump farming 101',
+        '2': 'Enchanted Lump-growing scroll',
+        '3': 'Infinite knowledge',
+        '4': 'Auto-clicking process',
+        '5': 'Faster and lumpier clicking process'
+    }
+
+    const pointOnePercent = function (number) {
+        number = Math.floor(number /10);
+        return 1 + (number / 100);
+    };
+    const onePercent = 0.01
+
+
+    MoreHeavenlyUpgradesRemastered.init = function() {
+        MoreHeavenlyUpgradesRemastered.isLoaded = 1;
+        Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
         //Game.registerHook('check', function () {
         //    Game.Notify('Test', `${Game.Has('Call on the luck')}`, [19, 7], 6);
         //});
@@ -176,17 +226,22 @@ MoreHeavenlyUpgrades.launch = function() {
         }
 
 
+        //Sugar Lump growing process
         // TIER 1
-        CCSE.NewHeavenlyUpgrade('Sugar lump farming 101', 'This is the start of your ascension to become a true sugar lump farmer. Time to ripe and time to fall are now dependant on the time to mature a sugar lump!', 1, [15, 9], -75, -1540, ['Sucralosia Inutilis']);
+        CCSE.NewHeavenlyUpgrade(sugarLumpMinTime[1], `This is the start of your ascension to become a true sugar lump farmer. The minimum time to grow a sugar lump is now reduced to 1 hour. Also ripen and fall time are dependant on maturing time`, 2.5E1, [15, 9], -75, -1540, ['Sucralosia Inutilis']);
+        
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][1], `Sugar lumps mature <b>${1*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E2, [10, 9], -100, -1550, [sugarLumpMinTime[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][2], `Sugar lumps mature <b>${1*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[1][0]}`, 2.5E2, [1, 1], -125, -1540, [buildingTiers[1][1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][1], `Sugar lumps mature <b>${2*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E3, [10, 9], -150, -1550, [buildingTiers[1][2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][2], `Sugar lumps mature <b>${2*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[2][0]}`, 2.5E3, [1, 1], -175, -1540, [buildingTiers[2][1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][1], `Sugar lumps mature <b>${3*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E4, [10, 9], -200, -1550, [buildingTiers[2][2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][2], `Sugar lumps mature <b>${3*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[3][0]}`, 2.5E4, [1, 1], -225, -1540, [buildingTiers[3][1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][1], `Sugar lumps mature <b>${4*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E5, [10, 9], -250, -1550, [buildingTiers[3][2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][2], `Sugar lumps mature <b>${4*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[4][0]}`, 2.5E5, [1, 1], -275, -1540, [buildingTiers[4][1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][1], `Sugar lumps mature <b>${5*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E6, [10, 9], -300, -1550, [buildingTiers[4][2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][2], `Sugar lumps mature <b>${5*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[5][0]}`, 2.5E6, [1, 1], -325, -1540, [buildingTiers[5][1]]);
 
-        CCSE.NewHeavenlyUpgrade('Lump caregiver', 'Sugar lumps mature <b>6 minutes</b> sooner', 500000000, [10, 9], 100, -1540, ['Sugar lump farming 101']);
-        CCSE.NewHeavenlyUpgrade('Sugar lump farm', 'Sugar lumps mature <b>9 minutes</b> sooner', 500000000, [25, 1], 75, -1650, ['Lump caregiver']);
-        CCSE.NewHeavenlyUpgrade('Sugar Farming process', 'Each Farm makes sugar lumps mature <b> .75 seconds</b> sooner.', 700000000, [2, 17], 175, -1650, ['Sugar lump farm']);
-        CCSE.NewHeavenlyUpgrade('Sugar water', "Sugar lumps mature <b>12 minutes</b> sooner.<q>Of course if you put sugar into water the lumps will grow faster!</q", 500000000, [2, 15], 50, -1760, ['Sugar lump farm']);
-        CCSE.NewHeavenlyUpgrade('Specialized greenhouse', "Sugar lumps mature <b>15 minutes</b> sooner.<q>Creates de perfect conditions for the lump to grow</q>", 500000000, [11, 9], -175, -1760, ['Sugar water']);
-        CCSE.NewHeavenlyUpgrade('Sweet and tasty fertilizer', "Sugar lumps mature <b>18 minutes</b> sooner.<q>It's actually made of choclate chips, cookie crumbs and sugar</q>", 500000000, [30, 13], -200, -1650, ['Specialized greenhouse']);
-        CCSE.NewHeavenlyUpgrade('Dirt extraction process', "Each Mine makes sugar lumps mature <b>1 second</b> sooner.<q>We can use some of the extra produce to fertilize de lump</q>", 800000000, [3, 17], -100, -1650, ['Sweet and tasty fertilizer']);
-
+        //TIER 2
 
         CCSE.NewHeavenlyUpgrade('Lofi hip-hop beats to chill and grow to', "Sugar lumps mature <b>21 minutes</b> sooner.<q>Plants do actually grow better when listening to some sweet tunes</q>", 500000000, [28, 6], -250, -1540, ['Sweet and tasty fertilizer']);
 
@@ -203,7 +258,6 @@ MoreHeavenlyUpgrades.launch = function() {
 
 
         CCSE.NewHeavenlyUpgrade('Lump-growing potion', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>In the scroll there was also a formula for a potion that makes lumps grow faster!</q>", 1500000000, [33, 11], -370, -1850, ['Ancient lump-growing scroll', 'A nice fairy', 'Lump-growing calculator']);
-        CCSE.NewHeavenlyUpgrade('Overclocked potion making process', "Each Factory (up to 300) makes sugar lumps ripen <b>6 seconds</b> sooner.<q>We can mass produce the potions now!</q>", 900000000, [4, 17], -470, -1830, ['Lump-growing potion']);
         CCSE.NewHeavenlyUpgrade('Overclocked potion crafting process', "Each Alchemy lab (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>Combining the power of factories and alchemy we can speed up the potion-making</q>", 1400000000, [6, 17], -550, -1790, ['Overclocked potion making process']);
 
 
@@ -225,7 +279,6 @@ MoreHeavenlyUpgrades.launch = function() {
         //Eternal Knowledge                                                                                                                                                                      
         CCSE.NewHeavenlyUpgrade('Mind opening', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>Praying to both deities gave you a mindblowing knowledge. Will you use it right?</q>", 999999999990, [27, 2], -800, -1975, ['Elder Lump demon', 'Benevolent elder Lump god']);
         CCSE.NewHeavenlyUpgrade('Ilumination-based growing process', "Each Prism (up to 300) makes sugar lumps ripen and mature <b>6 seconds</b> sooner.<q>One might say you've become enlightened<br><br>And the lump as well, the light from the prisms help it's growth</q>", 1800000000, [14, 17], -920, -2000, ['Mind opening']);
-
         //True Santa
         CCSE.NewHeavenlyUpgrade('Santa-summoning spell', "Sugar lumps ripen and mature <b>20 minutes</b> sooner.<q>Apparently this scroll had the ritual to summon true santa, he promises knowledge in exchange of chips</q>", 999999999990, [19, 10], -600, -2175, ['Enchanted Lump-growing scroll']);
         Game.last.showIf = function() { return (Game.Achievements["All hail Santa"].won == 1); };
@@ -282,41 +335,22 @@ MoreHeavenlyUpgrades.launch = function() {
 
 
 
+        //Game.customShimmerTypes[key].getTimeMod --> adjust golden cookie spawn rate, <1 equals faster
+        // Game.customShimmerTypes[key].durationMult
+
+
         Game.customComputeLumpTimes.push(function() {
-            const second = 1000;
-            const minute = second * 60;
-            const tenMinutes = minute * 10;
-            const scalingBaseReduce = 250;
-            const staticBasereduce = minute * 3;
-            //Map that contains building tier as keys which maps to an enum of [name, staticReducer, scalingReducer]
-            const buildingTiers = {
-                '1': ['Cursor', null, null],
-                '2': ['Grandma', 'Lump caregiver', null],
-                '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process'],
-                '4': ['Mine', 'Sugar water', 'Dirt extraction process'],
-                '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process'],
-                '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process'],
-                '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process'],
-                '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process'],
-                '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process'],
-                '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process'],
-                '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process'],
-                '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process'],
-                '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process'],
-                '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process'],
-                '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process'],
-                '16': ['Fractal engine', 'THE Even truer and elder Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process'],
-                '17': ['Javascript console', 'Mind opening', 'True evil process'],
-                '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process'],
-                '19': ['Cortex baker', 'The ancient cookie dragon', null],
-                '20': ['You', 'A book', null]
-            };
-            let minMatureTime = tenMinutes;
-            if (Game.Has('Ancient lump-growing scroll')) minMatureTime -= minute * 3;
-            if (Game.Has('Enchanted Lump-growing scroll')) minMatureTime -= minute * 3;
-            if (Game.Has('Infinite knowledge')) minMatureTime -= minute * 3;
-            if (Game.Has('Auto-clicking process')) minMatureTime -= Math.floor(Game.Objects['Cursor'].amount / 100) * second;
-            if (Game.Has('Faster and lumpier clicking process')) minMatureTime -= Game.Objects['Cursor'].level * second;
+            let minMatureTime = hour * 12;
+            if (Game.Has(sugarLumpMinTime[1])) minMatureTime -= hour * 11
+            if (Game.Has(sugarLumpMinTime[2])) minMatureTime -= minute * 15;
+            if (Game.Has(sugarLumpMinTime[3])) minMatureTime -= minute * 15;
+            if (Game.Has(sugarLumpMinTime[4])) minMatureTime -= minute * 15;
+            if (Game.Has(sugarLumpMinTime[5])) minMatureTime -= (() => {
+                let objKeys = Object.keys(Game.Objects);
+                let sum = 0;
+                objKeys.forEach((e) => sum += Game.Objects[e].level);
+                return Math.floor(sum);
+              })();
             minMatureTime = Math.max(minMatureTime, second);
 
             for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
@@ -432,26 +466,28 @@ MoreHeavenlyUpgrades.launch = function() {
 
         }
         Game.registerHook('cps', function(cps) {
-            if (Game.Has('Divine gains')) cps *= 1+(Game.goldenClicks / 100);
-            if (Game.Has('Divine buildings')) cps *= 1+(Game.BuildingsOwned / 100);
-            if (Game.Has('Divine round numbers') && Game.BuildingsOwned % 10 == 0) cps *= 2;
-            return cps;
+            let cpsMult = 1;
+            if (Game.Has('Divine gains')) cpsMult *= pointOnePercent(Game.goldenClicks);
+            if (Game.Has('Divine buildings')) cpsMult *= pointOnePercent(Game.BuildingsOwned);
+            if (Game.Has('Divine round numbers') && Game.BuildingsOwned % 10 == 0) cpsMult *= 2;
+            if (Game.Has('Divine savings') && Game.Objects['Farm']?.minigame?.harvestsTotal) cpsMult *= 1 + (Game.Objects['Farm'].minigame.harvestsTotal / 1000);
+            return cps * cpsMult;
         });
     });
 
 
 
 
-    if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgrades.name, MoreHeavenlyUpgrades.version, MoreHeavenlyUpgrades.GameVersion)) Game.registerMod(MoreHeavenlyUpgrades.name, MoreHeavenlyUpgrades); // MoreHeavenlyUpgrades.init();
+    if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
 
 }
 
-if (!MoreHeavenlyUpgrades.isLoaded) {
+if (!MoreHeavenlyUpgradesRemastered.isLoaded) {
     if (CCSE && CCSE.isLoaded) {
-        MoreHeavenlyUpgrades.launch();
+        MoreHeavenlyUpgradesRemastered.launch();
     } else {
         if (!CCSE) var CCSE = {};
         if (!CCSE.postLoadHooks) CCSE.postLoadHooks = [];
-        CCSE.postLoadHooks.push(MoreHeavenlyUpgrades.launch);
+        CCSE.postLoadHooks.push(MoreHeavenlyUpgradesRemastered.launch);
     }
 }
