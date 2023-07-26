@@ -364,8 +364,17 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             Game.lumpRipeAge = Math.min(Game.lumpRipeAge, Game.lumpMatureAge * 2);
             Game.lumpOverripeAge = Math.min(Game.lumpOverripeAge, Game.lumpRipeAge * 2);
         });
+        Game.customComputeLumpTimes.push(function offlineLumps () {
+            Game.lumps += Math.floor(Math.abs(Date.now() - Game.lastDate) / Game.lumpOverripeAge);
+            Game.lumps += 50;
+            let thisHasToGo = offlineLumps.toString();
+            let index = Game.customComputeLumpTimes.findIndex(fn => fn.toString() === thisHasToGo);
+            Game.customComputeLumpTimes.splice(index, 1);
+
+        });
     }
-/*
+    /*
+
     var buy50ofEach = function() {
         for (let o = 0; o < Game.ObjectsById.length; o++) {
             Game.ObjectsById[o].getFree(50);
@@ -470,6 +479,8 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
     });
     */
+
+
    Game.registerHook('cps', function(cps) {
        if (Game.Has('Divine gains')) cps *= pointOnePercent(Game.goldenClicks);
        if (Game.Has('Divine buildings')) cps *= pointOnePercent(Game.BuildingsOwned);
@@ -477,7 +488,6 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
        if (Game.Has('Divine savings') && Game.Objects['Farm']?.minigame?.harvestsTotal) cps *= 1 + (Game.Objects['Farm'].minigame.harvestsTotal / 1000);
        return cps;
     });
-
 
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
