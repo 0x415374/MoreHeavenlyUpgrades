@@ -366,11 +366,9 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         });
         Game.customComputeLumpTimes.push(function offlineLumps () {
             Game.lumps += Math.floor(Math.abs(Date.now() - Game.lastDate) / Game.lumpOverripeAge);
-            Game.lumps += 50;
-            let thisHasToGo = offlineLumps.toString();
-            let index = Game.customComputeLumpTimes.findIndex(fn => fn.toString() === thisHasToGo);
+            let thisHasToLeave = offlineLumps.toString();
+            let index = Game.customComputeLumpTimes.findIndex(fn => fn.toString() === thisHasToLeave);
             Game.customComputeLumpTimes.splice(index, 1);
-
         });
     }
     /*
