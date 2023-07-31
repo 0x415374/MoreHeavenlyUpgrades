@@ -11,22 +11,21 @@ MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 //debug
 //Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
 
+//TODO: Goal is to have cps, lumps and utility trees with 9 specials and 40 incremential bonuses each
 MoreHeavenlyUpgradesRemastered.launch = function() {
     let cpsUpgrade = 0;
     let lumpUpgrade = 0;
-    let utilitxUpgrade = 0;
+    let utilityUpgrade = 0;
 
     const heavenlyUpgradeBase = 1_111_111;
-    const heavenlyUpgradePow = 3;
+    const heavenlyUpgradePow = 2.5;
 
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
-    const scalingBaseReduce = 250;
-    const staticBasereduce = minute * 3;
+
     const pointOnePercent = 0.001;
     const onePercent = 0.01;
-    const baseCpsIncrease = 50;
 
     //Map that contains building tier as keys which maps to an enum of [name, {Sugar Lump}staticReduce, {Sugar Lump}scalingReduce, {CPS}baseCps]
     const buildingTiers = {
@@ -52,6 +51,10 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         '20': ['You', 'A book', 'I', 'Embrace Yoursef']
     };
 
+    //TODO: add golden summoner, add another 2 specials.
+    const scalingBaseReduce = 250;
+    const staticBasereduce = minute * 3;
+    const minTimeReduce = minute * 18;
     const sugarLumpSpecial = {
         '1': 'Sugar lump farming 101',
         '2': 'Ancient Lump-growing scroll',
@@ -61,6 +64,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         '6': 'Faster and lumpier clicking process'
     }
 
+    const baseCpsIncrease = 50;
     const cpsSpecial = {
         '1': 'Flora',
         '2': 'Hades',
@@ -88,49 +92,49 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //CPS block
         //CPS BASE
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[1], 'Increases you CPS by .1% for every Sugar Lump collected', heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -450, ['Keepsakes']);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[1], 'Increases you CPS by .1% for every Sugar Lump collected, stacking additively', heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -450, ['Keepsakes']);
 
         //CPS TIER 1
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Increases the base CPS of ${buildingTiers[1][0]} by ${baseCpsIncrease}%`, 6.6E2, [22, 19], -1750, -500, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Increases the base CPS of ${buildingTiers[2][0]} by ${baseCpsIncrease}%`, 6.6E3, [22, 19], -1600, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Increases the base CPS of ${buildingTiers[1][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1750, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Increases the base CPS of ${buildingTiers[2][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1600, -650, [cpsSpecial[1]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Increases the base CPS of ${buildingTiers[3][0]} by ${baseCpsIncrease}%`, 6.6E4, [22, 19], -1900, -550, [buildingTiers[1][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Increases the base CPS of ${buildingTiers[4][0]} by ${baseCpsIncrease}%`, 6.6E5, [22, 19], -1700, -800, [buildingTiers[2][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Increases the base CPS of ${buildingTiers[3][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1900, -550, [buildingTiers[1][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Increases the base CPS of ${buildingTiers[4][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1700, -800, [buildingTiers[2][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Increases the base CPS of ${buildingTiers[5][0]} by ${baseCpsIncrease}%`, 6.6E6, [22, 19], -2100, -650, [buildingTiers[3][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Increases the base CPS of ${buildingTiers[6][0]} by ${baseCpsIncrease}%`, 6.6E7, [22, 19], -1900, -900, [buildingTiers[4][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Increases the base CPS of ${buildingTiers[5][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -2100, -650, [buildingTiers[3][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Increases the base CPS of ${buildingTiers[6][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1900, -900, [buildingTiers[4][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Increases the base CPS of ${buildingTiers[7][0]} by ${baseCpsIncrease}%`, 6.6E8, [22, 19], -2200, -750, [buildingTiers[5][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Increases the base CPS of ${buildingTiers[8][0]} by ${baseCpsIncrease}%`, 6.6E9, [22, 19], -2100, -950, [buildingTiers[6][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Increases the base CPS of ${buildingTiers[7][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -2200, -750, [buildingTiers[5][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Increases the base CPS of ${buildingTiers[8][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -2100, -950, [buildingTiers[6][3]]);
 
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[2], `Doubles CPS as long as the total number of buildings is divisible by 10`, 6.6E10, [22, 19], -2300, -950, [buildingTiers[7][3], buildingTiers[8][3]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[2], `Doubles CPS as long as the total number of buildings is divisible by 10`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -2300, -950, [buildingTiers[7][3], buildingTiers[8][3]]);
 
         //CPS TIER 2
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][3], `Increases the base CPS of ${buildingTiers[9][0]} by ${baseCpsIncrease}%`, 6.6E11, [22, 19], -1250, -500, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Increases the base CPS of ${buildingTiers[10][0]} by ${baseCpsIncrease}%`, 6.6E12, [22, 19], -1400, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][3], `Increases the base CPS of ${buildingTiers[9][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1250, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Increases the base CPS of ${buildingTiers[10][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1400, -650, [cpsSpecial[1]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Increases the base CPS of ${buildingTiers[11][0]} by ${baseCpsIncrease}%`, 6.6E13, [22, 19], -1100, -550, [buildingTiers[9][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Increases the base CPS of ${buildingTiers[12][0]} by ${baseCpsIncrease}%`, 6.6E14, [22, 19], -1300, -800, [buildingTiers[10][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Increases the base CPS of ${buildingTiers[11][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1100, -550, [buildingTiers[9][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Increases the base CPS of ${buildingTiers[12][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1300, -800, [buildingTiers[10][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][3], `Increases the base CPS of ${buildingTiers[13][0]} by ${baseCpsIncrease}%`, 6.6E15, [22, 19], -900, -650, [buildingTiers[11][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][3], `Increases the base CPS of ${buildingTiers[14][0]} by ${baseCpsIncrease}%`, 6.6E16, [22, 19], -1100, -900, [buildingTiers[12][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][3], `Increases the base CPS of ${buildingTiers[13][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -900, -650, [buildingTiers[11][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][3], `Increases the base CPS of ${buildingTiers[14][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1100, -900, [buildingTiers[12][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][3], `Increases the base CPS of ${buildingTiers[15][0]} by ${baseCpsIncrease}%`, 6.6E17, [22, 19], -800, -750, [buildingTiers[13][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][3], `Increases the base CPS of ${buildingTiers[16][0]} by ${baseCpsIncrease}%`, 6.6E18, [22, 19], -900, -950, [buildingTiers[14][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][3], `Increases the base CPS of ${buildingTiers[15][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -800, -750, [buildingTiers[13][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][3], `Increases the base CPS of ${buildingTiers[16][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -900, -950, [buildingTiers[14][3]]);
 
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[3], `Increases CPS by .1% for each golden cookie clicked`, 6.6E19, [22, 19], -700, -950, [buildingTiers[15][3], buildingTiers[16][3]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[3], `Increases CPS by .1% for each golden cookie clicked, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -700, -950, [buildingTiers[15][3], buildingTiers[16][3]]);
        
 
         //CPS TIER 3
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[4], `Increases CPS by .1% for each building owned`, 6.6E20, [22, 19], -1500, -650, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][3], `Increases the base CPS of ${buildingTiers[17][0]} by ${baseCpsIncrease}%`, 6.6E21, [22, 19], -1500, -850, [cpsSpecial[4]]);
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[5], `Increases CPS by .1% for each plant harvested in the garden`, 6.6E22, [22, 19], -1500, -1050, buildingTiers[17][3]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[4], `Increases CPS by .1% for each building owned, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][3], `Increases the base CPS of ${buildingTiers[17][0]} by ${baseCpsIncrease}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -850, [cpsSpecial[4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[5], `Increases CPS by .1% for each plant harvested in the garden, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -1050, [buildingTiers[17][3]]);
         
 
 
 
 
-        //
+        //Combine to 1?
         //Atheism I increase cps by x3 if no ruby god
         //Atheism II increases cps by x6 if no jade slot
         //Atheism III increases cps by x12 if no diamond slot
@@ -138,10 +142,12 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //Building Cps calculation
         //This contributes almost nothing to total CPS
-        for (let i = 1; i <= 5; i++) {
+        //Now this has the potential to be wayyy too overpowered
+        //This messes uo the % distribution of buildings in the stats - maybe global additively stacking mult?
+        for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
             Game.customBuildings[buildingTiers[i][0]].cpsMult.push(function () {
                 let cpsMultiplier = 1;
-                if(buildingTiers[i][3] && Game.Has(buildingTiers[i][3])) cpsMultiplier *= 1 + (baseCpsIncrease * onePercent);
+                if(buildingTiers[i][3] && Game.Has(buildingTiers[i][3])) cpsMultiplier *= (1 + onePercent) ** Game.Objects[buildingTiers[i][0]].amount;
                 return cpsMultiplier;
             });
         }
@@ -289,73 +295,73 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //Sugar Lump growing process
         //Sugar Lumps TIER 1
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[1], `This is the start of your ascension to become a true sugar lump farmer. The minimum time to grow a sugar lump is now reduced to 1 hour. Also ripen and fall time are dependant on maturing time`, 2.5E1, [15, 9], -100, -1500, ['Sucralosia Inutilis']);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[1], `This is the start of your ascension to become a true sugar lump farmer. The minimum time to grow a sugar lump is now reduced to 1 hour. Also ripen and fall time are dependant on maturing time`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -1500, ['Sucralosia Inutilis']);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][1], `Sugar lumps mature <b>${1*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E2, [0, 0], -750, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][2], `Sugar lumps mature <b>${1*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[1][0]}`, 2.5E2, [0, 1], -650, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][1], `Sugar lumps mature <b>${2*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E3, [1, 0], -450, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][2], `Sugar lumps mature <b>${2*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[2][0]}`, 2.5E3, [1, 1], -350, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][1], `Sugar lumps mature <b>${3*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E4, [2, 0], -150, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][2], `Sugar lumps mature <b>${3*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[3][0]}`, 2.5E4, [2, 1], -50, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][1], `Sugar lumps mature <b>${4*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E5, [3, 0], 150, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][2], `Sugar lumps mature <b>${4*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[4][0]}`, 2.5E5, [3, 1], 250, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][1], `Sugar lumps mature <b>${5*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E6, [4, 0], 450, -1700, [sugarLumpSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][2], `Sugar lumps mature <b>${5*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[5][0]}`, 2.5E6, [4, 1], 550, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][1], `Sugar lumps mature <b>${1*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [0, 0], -750, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][2], `Sugar lumps mature <b>${1*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[1][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [0, 1], -650, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][1], `Sugar lumps mature <b>${2*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [1, 0], -450, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][2], `Sugar lumps mature <b>${2*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[2][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [1, 1], -350, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][1], `Sugar lumps mature <b>${3*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [2, 0], -150, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][2], `Sugar lumps mature <b>${3*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[3][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [2, 1], -50, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][1], `Sugar lumps mature <b>${4*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [3, 0], 150, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][2], `Sugar lumps mature <b>${4*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[4][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [3, 1], 250, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][1], `Sugar lumps mature <b>${5*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [4, 0], 450, -1700, [sugarLumpSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][2], `Sugar lumps mature <b>${5*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[5][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [4, 1], 550, -1700, [sugarLumpSpecial[1]]);
 
         //Sugar Lumps TIER 2
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[2], `You are an adept sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E7, [15, 9], -100, -1900, [buildingTiers[1][1], buildingTiers[1][2], buildingTiers[2][1], buildingTiers[2][2], buildingTiers[3][1], buildingTiers[3][2], buildingTiers[4][1], buildingTiers[4][2], buildingTiers[5][1], buildingTiers[5][2]]);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[2], `You are an adept sugar lump farmer. The minimum time to grow a sugar lump is reduced by ${minTimeReduce/minute} minutes`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -1900, [buildingTiers[1][1], buildingTiers[1][2], buildingTiers[2][1], buildingTiers[2][2], buildingTiers[3][1], buildingTiers[3][2], buildingTiers[4][1], buildingTiers[4][2], buildingTiers[5][1], buildingTiers[5][2]]);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][1], `Sugar lumps mature <b>${11*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E8, [6, 0], -750, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][2], `Sugar lumps mature <b>${11*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[6][0]}`, 2.5E8, [6, 1], -650, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][1], `Sugar lumps mature <b>${12*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E9, [7, 0], -450, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][2], `Sugar lumps mature <b>${12*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[7][0]}`, 2.5E9, [7, 1], -350, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][1], `Sugar lumps mature <b>${13*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E10, [8, 0], -150, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][2], `Sugar lumps mature <b>${13*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[8][0]}`, 2.5E10, [8, 1], -50, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][1], `Sugar lumps mature <b>${14*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E11, [9, 0], 150, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][2], `Sugar lumps mature <b>${14*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[9][0]}`, 2.5E11, [9, 1], 250, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][1], `Sugar lumps mature <b>${15*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E12, [10, 0], 450, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][2], `Sugar lumps mature <b>${15*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[10][0]}`, 2.5E12, [10, 1], 550, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][1], `Sugar lumps mature <b>${11*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 0], -750, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][2], `Sugar lumps mature <b>${11*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[6][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 1], -650, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][1], `Sugar lumps mature <b>${12*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 0], -450, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][2], `Sugar lumps mature <b>${12*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[7][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 1], -350, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][1], `Sugar lumps mature <b>${13*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 0], -150, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][2], `Sugar lumps mature <b>${13*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[8][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 1], -50, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][1], `Sugar lumps mature <b>${14*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 0], 150, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][2], `Sugar lumps mature <b>${14*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[9][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 1], 250, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][1], `Sugar lumps mature <b>${15*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 0], 450, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][2], `Sugar lumps mature <b>${15*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[10][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 1], 550, -2100, [sugarLumpSpecial[2]]);
 
         //Sugar Lumps TIER 3
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[3], `You are an advanced sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E13, [15, 9], -100, -2300, [buildingTiers[6][1], buildingTiers[6][2], buildingTiers[7][1], buildingTiers[7][2], buildingTiers[8][1], buildingTiers[8][2], buildingTiers[9][1], buildingTiers[9][2], buildingTiers[10][1], buildingTiers[10][2]]);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[3], `You are an advanced sugar lump farmer. The minimum time to grow a sugar lump is reduced by ${minTimeReduce/minute} minutes`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -2300, [buildingTiers[6][1], buildingTiers[6][2], buildingTiers[7][1], buildingTiers[7][2], buildingTiers[8][1], buildingTiers[8][2], buildingTiers[9][1], buildingTiers[9][2], buildingTiers[10][1], buildingTiers[10][2]]);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][1], `Sugar lumps mature <b>${11*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E14, [11, 0], -750, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][2], `Sugar lumps mature <b>${11*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[11][0]}`, 2.5E14, [11, 1], -650, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][1], `Sugar lumps mature <b>${12*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E15, [12, 0], -450, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][2], `Sugar lumps mature <b>${12*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[12][0]}`, 2.5E15, [12, 1], -350, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][1], `Sugar lumps mature <b>${13*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E16, [13, 0], -150, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][2], `Sugar lumps mature <b>${13*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[13][0]}`, 2.5E16, [13, 1], -50, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][1], `Sugar lumps mature <b>${14*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E17, [14, 0], 150, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][2], `Sugar lumps mature <b>${14*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[14][0]}`, 2.5E17, [14, 1], 250, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][1], `Sugar lumps mature <b>${15*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E18, [15, 0], 450, -2500, [sugarLumpSpecial[3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][2], `Sugar lumps mature <b>${15*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[15][0]}`, 2.5E18, [15, 1], 550, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][1], `Sugar lumps mature <b>${11*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [11, 0], -750, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][2], `Sugar lumps mature <b>${11*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[11][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [11, 1], -650, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][1], `Sugar lumps mature <b>${12*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [12, 0], -450, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][2], `Sugar lumps mature <b>${12*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[12][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [12, 1], -350, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][1], `Sugar lumps mature <b>${13*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [13, 0], -150, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][2], `Sugar lumps mature <b>${13*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[13][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [13, 1], -50, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][1], `Sugar lumps mature <b>${14*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [14, 0], 150, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][2], `Sugar lumps mature <b>${14*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[14][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [14, 1], 250, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][1], `Sugar lumps mature <b>${15*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 0], 450, -2500, [sugarLumpSpecial[3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][2], `Sugar lumps mature <b>${15*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[15][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 1], 550, -2500, [sugarLumpSpecial[3]]);
 
         //Sugar Lumps TIER 4
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[4], `You are an expert sugar lump farmer. The minimum time to grow a sugar lump is reduced by 15 minutes`, 2.5E19, [15, 9], -100, -2700, [buildingTiers[11][1], buildingTiers[11][2], buildingTiers[12][1], buildingTiers[12][2], buildingTiers[13][1], buildingTiers[13][2], buildingTiers[14][1], buildingTiers[14][2], buildingTiers[15][1], buildingTiers[15][2]]);
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[5], `Your sugar lump mastery now carries over to offline progress`, 2.5E20, [15, 9], -100, -2900, [sugarLumpSpecial[4]]);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[4], `You are an expert sugar lump farmer. The minimum time to grow a sugar lump is reduced by ${minTimeReduce/minute} minutes`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -2700, [buildingTiers[11][1], buildingTiers[11][2], buildingTiers[12][1], buildingTiers[12][2], buildingTiers[13][1], buildingTiers[13][2], buildingTiers[14][1], buildingTiers[14][2], buildingTiers[15][1], buildingTiers[15][2]]);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[5], `Your sugar lump mastery now carries over to offline progress`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -2900, [sugarLumpSpecial[4]]);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][1], `Sugar lumps mature <b>${16*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E21, [16, 0], -750, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][2], `Sugar lumps mature <b>${16*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[16][0]}`, 2.5E21, [11, 1], -650, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][1], `Sugar lumps mature <b>${17*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E22, [17, 0], -450, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][2], `Sugar lumps mature <b>${17*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[17][0]}`, 2.5E22, [12, 1], -350, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][1], `Sugar lumps mature <b>${18*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E23, [13, 0], -150, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][2], `Sugar lumps mature <b>${18*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[18][0]}`, 2.5E23, [13, 1], -50, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][1], `Sugar lumps mature <b>${19*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E24, [14, 0], 150, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][2], `Sugar lumps mature <b>${19*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[19][0]}`, 2.5E24, [14, 1], 250, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][1], `Sugar lumps mature <b>${20*staticBasereduce/1000/60} minutes</b> sooner`, 2.5E25, [15, 0], 450, -3100, [sugarLumpSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][2], `Sugar lumps mature <b>${20*scalingBaseReduce/1000} seconds</b> sooner for each ${buildingTiers[20][0]}`, 2.5E25, [15, 1], 550, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][1], `Sugar lumps mature <b>${16*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [16, 0], -750, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][2], `Sugar lumps mature <b>${16*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[16][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [11, 1], -650, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][1], `Sugar lumps mature <b>${17*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [17, 0], -450, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][2], `Sugar lumps mature <b>${17*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[17][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [12, 1], -350, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][1], `Sugar lumps mature <b>${18*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [13, 0], -150, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][2], `Sugar lumps mature <b>${18*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[18][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [13, 1], -50, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][1], `Sugar lumps mature <b>${19*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [14, 0], 150, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][2], `Sugar lumps mature <b>${19*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[19][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [14, 1], 250, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][1], `Sugar lumps mature <b>${20*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 0], 450, -3100, [sugarLumpSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][2], `Sugar lumps mature <b>${20*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[20][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 1], 550, -3100, [sugarLumpSpecial[5]]);
 
         //Sugar Lumps TIER 5
-        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[6], `Your minimum time to mature lumps is reduced by <b>${second/1000} second<b> for every upgrade level of your buildings, down to a cap of one second`, 2.5E26, [15, 9], -100, -3300, [buildingTiers[16][1], buildingTiers[16][2], buildingTiers[17][1], buildingTiers[17][2], buildingTiers[18][1], buildingTiers[18][2], buildingTiers[19][1], buildingTiers[19][2], buildingTiers[20][1], buildingTiers[20][2]]);
+        CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[6], `Your minimum time to mature lumps is reduced by <b>${second/second} second<b> for every upgrade level of your buildings, down to a cap of one second`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -3300, [buildingTiers[16][1], buildingTiers[16][2], buildingTiers[17][1], buildingTiers[17][2], buildingTiers[18][1], buildingTiers[18][2], buildingTiers[19][1], buildingTiers[19][2], buildingTiers[20][1], buildingTiers[20][2]]);
 
 
         //Sugar lump calculations
         Game.customComputeLumpTimes.push(function() {
             let minMatureTime = hour * 12;
             if (Game.Has(sugarLumpSpecial[1])) minMatureTime -= hour * 11
-            if (Game.Has(sugarLumpSpecial[2])) minMatureTime -= minute * 15;
-            if (Game.Has(sugarLumpSpecial[3])) minMatureTime -= minute * 15;
-            if (Game.Has(sugarLumpSpecial[4])) minMatureTime -= minute * 15;
+            if (Game.Has(sugarLumpSpecial[2])) minMatureTime -= minute * 18;
+            if (Game.Has(sugarLumpSpecial[3])) minMatureTime -= minute * 18;
+            if (Game.Has(sugarLumpSpecial[4])) minMatureTime -= minute * 18;
             if (Game.Has(sugarLumpSpecial[6])) minMatureTime -= (() => {
                 let objKeys = Object.keys(Game.Objects);
                 let sum = 0;
@@ -370,11 +376,11 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             };
 
             Game.lumpMatureAge = Math.max(Game.lumpMatureAge, minMatureTime);
-            Game.lumpRipeAge = Math.min(Game.lumpRipeAge, Game.lumpMatureAge * 2);
-            Game.lumpOverripeAge = Math.min(Game.lumpOverripeAge, Game.lumpRipeAge * 2);
+            Game.lumpRipeAge = Math.min(Game.lumpRipeAge, Math.ceil(Game.lumpMatureAge * 1.5));
+            Game.lumpOverripeAge = Math.min(Game.lumpOverripeAge, Math.ceil(Game.lumpRipeAge * 1.5));
         });
         Game.customComputeLumpTimes.push(function offlineLumps () {
-            if (Game.Has(sugarLumpSpecial[5])) Game.lumps += Math.floor(Math.abs(Date.now() - Game.lastDate) / Game.lumpOverripeAge);
+            if (Game.Has(sugarLumpSpecial[5])) Game.gainLumps(Math.floor((Math.abs(Date.now() - Game.lastDate) / Game.lumpOverripeAge)));
             let thisHasToLeave = offlineLumps.toString();
             let index = Game.customComputeLumpTimes.findIndex(fn => fn.toString() === thisHasToLeave);
             Game.customComputeLumpTimes.splice(index, 1);
@@ -392,17 +398,20 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         // CCSE.NewBuff(name func) // create Buff
 
         // return number < 1 to reduce time
-        // 0.9**40 seems to be the sweetspot i am looking for --- check 0.93 as 7 is the lucky number aso
+        // 0.95**20 seems to be the sweetspot i am looking for
         Game.customShimmerTypesAll.getTimeMod.push(function () {
             let multiplier = 1;
-            multiplier *= (0.93**40)
+            multiplier *= (0.95**20)
             return multiplier;
         });
         Game.customShimmerTypes['golden'].customEffectDurMod.push(function () {
             let multiplier = 1;
-            multiplier *= (1.07**40)
+            multiplier *= (1.05**20)
             return multiplier;
         });
+
+
+
         // Game.dropRateMult
         // turn this up to at least x5
 
@@ -502,6 +511,14 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     }); 
     */
 
+
+    //Game Hooks
+    Game.registerHook('logic', function () {
+        Game.Objects['Wizard tower'].minigame.magic += 0.002 - Game.Objects['Wizard tower'].minigame.magicPS;   
+    })
+
+
+
     //Global CPS calculation
    Game.registerHook('cps', function(cps) {
         let cpsMultiplier = 1;
@@ -510,6 +527,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         if (Game.Has(cpsSpecial[3])) cpsMultiplier *= 1 + toPointOnePercent(Game.goldenClicks);
         if (Game.Has(cpsSpecial[4])) cpsMultiplier *= 1 + toPointOnePercent(Game.BuildingsOwned);
         if (Game.Has(cpsSpecial[5]) && Game.Objects['Farm']?.minigame?.harvestsTotal) cpsMultiplier *= 1 + toPointOnePercent(Game.Objects['Farm'].minigame.harvestsTotal);
+        //Game.Notify('More Heavenly Upgrades Remastered loaded', '' + cpsMultiplier, [19, 7], 6);
         return cps * cpsMultiplier;
     });
 
