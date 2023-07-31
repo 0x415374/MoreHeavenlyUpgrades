@@ -4,7 +4,7 @@
 //Based on MoreHeavenlyUpgrades by RubyChan42
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
-MoreHeavenlyUpgradesRemastered.name = 'More heavenly upgrades Remastered';
+MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
 MoreHeavenlyUpgradesRemastered.version = '2.00';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
@@ -12,34 +12,44 @@ MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 //Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
 
 MoreHeavenlyUpgradesRemastered.launch = function() {
+    let cpsUpgrade = 0;
+    let lumpUpgrade = 0;
+    let utilitxUpgrade = 0;
+
+    const heavenlyUpgradeBase = 1_111_111;
+    const heavenlyUpgradePow = 3;
+
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
     const scalingBaseReduce = 250;
     const staticBasereduce = minute * 3;
+    const pointOnePercent = 0.001;
+    const onePercent = 0.01;
+    const baseCpsIncrease = 50;
 
     //Map that contains building tier as keys which maps to an enum of [name, {Sugar Lump}staticReduce, {Sugar Lump}scalingReduce, {CPS}baseCps]
     const buildingTiers = {
-        '1': ['Cursor', 'Lump rubbers', 'Velvet gloves', 'Geras'],
-        '2': ['Grandma', 'Lump caregiver', 'My lovely sugar lumps', 'Chaos'],
-        '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process', 'Faunus'],
-        '4': ['Mine', 'Sugar water', 'Dirt extraction process', 'Khonsu'],
-        '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process', 'Sobek'],
-        '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process', 'Asbest'],
-        '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process', 'Teer'],
-        '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process', 'Kegel'],
-        '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process', 'Porno'],
-        '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process', 'Penis'],
-        '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process', 'Sex'],
-        '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process', null],
-        '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process', null],
-        '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process', null],
-        '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process', null],
-        '16': ['Fractal engine', 'THE Even truer and eldererer Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process', null],
-        '17': ['Javascript console', 'Mind opening', 'True evil process', null],
-        '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process', null],
-        '19': ['Cortex baker', 'The ancient cookie dragon', 'Super Brainz', null],
-        '20': ['You', 'A book', 'I', null]
+        '1': ['Cursor', 'Lump rubbers', 'Velvet gloves', 'Embrace Cursors'],
+        '2': ['Grandma', 'Lump caregiver', 'My lovely sugar lumps', 'Embrace Grandmas'],
+        '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process', 'Embrace Farms'],
+        '4': ['Mine', 'Sugar water', 'Dirt extraction process', 'Embrace Mines'],
+        '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process', 'Embrace Factories'],
+        '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process', 'Embrace Banks'],
+        '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process', 'Embrace Temples'],
+        '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process', 'Embrace Wizard towers'],
+        '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process', 'Embrace Shipment'],
+        '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process', 'Embrace Alchemy labs'],
+        '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process', 'Embrace Portals'],
+        '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process', 'Embrace Time machine'],
+        '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process', 'Embrace Antimatter condensers'],
+        '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process', 'Embrace Prisms'],
+        '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process', 'Embrace Chancemakers'],
+        '16': ['Fractal engine', 'THE Even truer and eldererer Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process', 'Embrace Fractal engines'],
+        '17': ['Javascript console', 'Mind opening', 'True evil process', 'Embrace Javascript consoles'],
+        '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process', 'Embrace Idleverses'],
+        '19': ['Cortex baker', 'The ancient cookie dragon', 'Super Brainz', 'Embrace Cortex bakers'],
+        '20': ['You', 'A book', 'I', 'Embrace Yoursef']
     };
 
     const sugarLumpSpecial = {
@@ -53,7 +63,10 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
     const cpsSpecial = {
         '1': 'Flora',
-        '2': 'Hades'
+        '2': 'Hades',
+        '3': 'Xipe Totec',
+        '4': 'God of Construction',
+        '5': 'Some god of farming'
     }
 
     const toPointOnePercent = function (number) {
@@ -65,8 +78,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         return number / 100;
     }
 
-    const pointOnePercent = 0.001
-    const onePercent = 0.01
+
 
 
     MoreHeavenlyUpgradesRemastered.init = function() {
@@ -76,57 +88,66 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //CPS block
         //CPS BASE
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[1], 'Increases you CPS by .1% for every Sugar Lump collected', 6.6E1, [22, 19], -1500, -450, ['Keepsakes']);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[1], 'Increases you CPS by .1% for every Sugar Lump collected', heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -450, ['Keepsakes']);
 
         //CPS TIER 1
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Increases the base CPS of ${buildingTiers[1][0]} by 5%`, 6.6E2, [22, 19], -1750, -500, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Increases the base CPS of ${buildingTiers[2][0]} by 5%`, 6.6E3, [22, 19], -1600, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Increases the base CPS of ${buildingTiers[1][0]} by ${baseCpsIncrease}%`, 6.6E2, [22, 19], -1750, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Increases the base CPS of ${buildingTiers[2][0]} by ${baseCpsIncrease}%`, 6.6E3, [22, 19], -1600, -650, [cpsSpecial[1]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Increases the base CPS of ${buildingTiers[3][0]} by 5%`, 6.6E4, [22, 19], -1900, -550, [buildingTiers[1][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Increases the base CPS of ${buildingTiers[4][0]} by 5%`, 6.6E5, [22, 19], -1700, -800, [buildingTiers[2][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Increases the base CPS of ${buildingTiers[3][0]} by ${baseCpsIncrease}%`, 6.6E4, [22, 19], -1900, -550, [buildingTiers[1][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Increases the base CPS of ${buildingTiers[4][0]} by ${baseCpsIncrease}%`, 6.6E5, [22, 19], -1700, -800, [buildingTiers[2][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Increases the base CPS of ${buildingTiers[5][0]} by 5%`, 6.6E6, [22, 19], -2100, -650, [buildingTiers[3][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Increases the base CPS of ${buildingTiers[6][0]} by 5%`, 6.6E7, [22, 19], -1900, -900, [buildingTiers[4][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Increases the base CPS of ${buildingTiers[5][0]} by ${baseCpsIncrease}%`, 6.6E6, [22, 19], -2100, -650, [buildingTiers[3][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Increases the base CPS of ${buildingTiers[6][0]} by ${baseCpsIncrease}%`, 6.6E7, [22, 19], -1900, -900, [buildingTiers[4][3]]);
 
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Increases the base CPS of ${buildingTiers[7][0]} by 5%`, 6.6E8, [22, 19], -2200, -750, [buildingTiers[5][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Increases the base CPS of ${buildingTiers[8][0]} by 5%`, 6.6E9, [22, 19], -2100, -950, [buildingTiers[6][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Increases the base CPS of ${buildingTiers[7][0]} by ${baseCpsIncrease}%`, 6.6E8, [22, 19], -2200, -750, [buildingTiers[5][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Increases the base CPS of ${buildingTiers[8][0]} by ${baseCpsIncrease}%`, 6.6E9, [22, 19], -2100, -950, [buildingTiers[6][3]]);
 
         CCSE.NewHeavenlyUpgrade(cpsSpecial[2], `Doubles CPS as long as the total number of buildings is divisible by 10`, 6.6E10, [22, 19], -2300, -950, [buildingTiers[7][3], buildingTiers[8][3]]);
-        //TODO: change names and add special to end of the leaf
 
-        //CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Increases the base CPS of ${buildingTiers[10][0]} by 5%`, 6.6E5, [22, 19], -1700, -700, [buildingTiers[2][3]]);
-        //CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Increases the base CPS of ${buildingTiers[11][0]} by 5%`, 6.6E4, [22, 19], -1800, -500, [buildingTiers[1][3]]);
-        //CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Increases the base CPS of ${buildingTiers[12][0]} by 5%`, 6.6E5, [22, 19], -1700, -700, [buildingTiers[2][3]]);       
+        //CPS TIER 2
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][3], `Increases the base CPS of ${buildingTiers[9][0]} by ${baseCpsIncrease}%`, 6.6E11, [22, 19], -1250, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Increases the base CPS of ${buildingTiers[10][0]} by ${baseCpsIncrease}%`, 6.6E12, [22, 19], -1400, -650, [cpsSpecial[1]]);
+
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Increases the base CPS of ${buildingTiers[11][0]} by ${baseCpsIncrease}%`, 6.6E13, [22, 19], -1100, -550, [buildingTiers[9][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Increases the base CPS of ${buildingTiers[12][0]} by ${baseCpsIncrease}%`, 6.6E14, [22, 19], -1300, -800, [buildingTiers[10][3]]);
+
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][3], `Increases the base CPS of ${buildingTiers[13][0]} by ${baseCpsIncrease}%`, 6.6E15, [22, 19], -900, -650, [buildingTiers[11][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][3], `Increases the base CPS of ${buildingTiers[14][0]} by ${baseCpsIncrease}%`, 6.6E16, [22, 19], -1100, -900, [buildingTiers[12][3]]);
+
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][3], `Increases the base CPS of ${buildingTiers[15][0]} by ${baseCpsIncrease}%`, 6.6E17, [22, 19], -800, -750, [buildingTiers[13][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][3], `Increases the base CPS of ${buildingTiers[16][0]} by ${baseCpsIncrease}%`, 6.6E18, [22, 19], -900, -950, [buildingTiers[14][3]]);
+
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[3], `Increases CPS by .1% for each golden cookie clicked`, 6.6E19, [22, 19], -700, -950, [buildingTiers[15][3], buildingTiers[16][3]]);
+       
+
+        //CPS TIER 3
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[4], `Increases CPS by .1% for each building owned`, 6.6E20, [22, 19], -1500, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][3], `Increases the base CPS of ${buildingTiers[17][0]} by ${baseCpsIncrease}%`, 6.6E21, [22, 19], -1500, -850, [cpsSpecial[4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[5], `Increases CPS by .1% for each plant harvested in the garden`, 6.6E22, [22, 19], -1500, -1050, buildingTiers[17][3]);
+        
 
 
 
 
         //
-        //Atheism I increase cps by x2 if no ruby god
-        //Atheism II increases cps by x4 if no jade slot
-        //Atheism III increases cps by x8 if no diamond slot
+        //Atheism I increase cps by x3 if no ruby god
+        //Atheism II increases cps by x6 if no jade slot
+        //Atheism III increases cps by x12 if no diamond slot
 
 
         //Building Cps calculation
-        for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
-            if(buildingTiers[[i]][3] && Game.Has(buildingTiers[[i]][3])) {
-                CCSE.Game.customBuildings[obj.name].cpsMult.push(function () {
-                    return 1.05;
-                });
-            }
+        //This contributes almost nothing to total CPS
+        for (let i = 1; i <= 5; i++) {
+            Game.customBuildings[buildingTiers[i][0]].cpsMult.push(function () {
+                let cpsMultiplier = 1;
+                if(buildingTiers[i][3] && Game.Has(buildingTiers[i][3])) cpsMultiplier *= 1 + (baseCpsIncrease * onePercent);
+                return cpsMultiplier;
+            });
         }
 
 
-
-
-
-
-
 /*
-
-
-        CCSE.NewHeavenlyUpgrade('Divine round numbers', 'Doubles CpS as long as the total number of buildings is divisible by 10', 999999999999999, [22, 19], -800, 675, ['Divine buildings']);
-
 
 
         CCSE.NewHeavenlyUpgrade('Divine savings', 'Has absolutely no effect right now as it was way too overpowered', 7777777777, [20, 7], -631, 218, ['Lucky digit', 'Lucky number', 'Lucky payout']);
@@ -344,8 +365,8 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             minMatureTime = Math.max(minMatureTime, second);
 
             for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
-                if(buildingTiers[[i]][1] && Game.Has(buildingTiers[[i]][1])) Game.lumpMatureAge -= staticBasereduce * i;
-                if(buildingTiers[[i]][2] && Game.Has(buildingTiers[[i]][2])) Game.lumpMatureAge -= scalingBaseReduce * i * Game.Objects[buildingTiers[[i]][0]].amount;
+                if(buildingTiers[i][1] && Game.Has(buildingTiers[i][1])) Game.lumpMatureAge -= staticBasereduce * i;
+                if(buildingTiers[i][2] && Game.Has(buildingTiers[i][2])) Game.lumpMatureAge -= scalingBaseReduce * i * Game.Objects[buildingTiers[i][0]].amount;
             };
 
             Game.lumpMatureAge = Math.max(Game.lumpMatureAge, minMatureTime);
@@ -358,9 +379,43 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             let index = Game.customComputeLumpTimes.findIndex(fn => fn.toString() === thisHasToLeave);
             Game.customComputeLumpTimes.splice(index, 1);
         });
-    }
+        let newShimmer = new Game.shimmer('golden');
+        newShimmer.spawnLead = 1;
 
-    
+
+
+        // Game.dropRateMult
+        //Game.customShimmerTypesAll.getTimeMod = []; // this is spawntimer
+        //		if(!Game.customShimmerTypes['golden'].customEffectDurMod) Game.customShimmerTypes['golden'].customEffectDurMod = []; // buff duration
+		//if(!Game.customShimmerTypes['golden'].customMult) Game.customShimmerTypes['golden'].customMult = []; // this sucks, can still use it for dummy upgrades  - must inject into buffs to increase effect
+		//if(!Game.customShimmerTypes['golden'].customBuff) Game.customShimmerTypes['golden'].customBuff = []; // create own buff? maybe elder frenzy into golden cookie effects
+        // CCSE.NewBuff(name func) // create Buff
+
+        // return number < 1 to reduce time
+        // 0.9**40 seems to be the sweetspot i am looking for --- check 0.93 as 7 is the lucky number aso
+        Game.customShimmerTypesAll.getTimeMod.push(function () {
+            let multiplier = 1;
+            multiplier *= (0.93**40)
+            return multiplier;
+        });
+        Game.customShimmerTypes['golden'].customEffectDurMod.push(function () {
+            let multiplier = 1;
+            multiplier *= (1.07**40)
+            return multiplier;
+        });
+        // Game.dropRateMult
+        // turn this up to at least x5
+
+
+        
+        //Game.customShimmerTypes['golden'].customListPush.push('Elder Frenzy')
+
+
+        //Game.Notify('Hi', '' + (1 + toPointOnePercent(Game.lumpsTotal)), [19, 7], 6);
+        //Game.Notify('Hi', '' + Game.canLumps(), [19, 7], 6);
+
+
+    }
 
 
 
@@ -423,14 +478,38 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
     */
 
+
+    // NEW GAME PLUS
+    /*
+    Game.registerHook('logic', function() {
+        Game.cookies = 0;
+        Game.cookiesEarned = 0;
+        Game.cookiesReset = 0;
+        Game.heavenlyChips = 0
+        Game.PrestigeUpgrades.forEach((e) => Game.Lock(e.name))
+        for (let tier in buildingTiers) {
+            let buildings = buildingTiers[tier];
+            for (let i = 1; i < buildings.length; i++) {
+                Game.Lock(buildings[i]);
+            }
+        }
+        for (let value in sugarLumpSpecial) {
+            Game.Lock(sugarLumpSpecial[value]);
+        }
+        for (let value in cpsSpecial) {
+            Game.Lock(cpsSpecial[value]);
+        }
+    }); 
+    */
+
     //Global CPS calculation
    Game.registerHook('cps', function(cps) {
         let cpsMultiplier = 1;
         if (Game.Has(cpsSpecial[1])) cpsMultiplier *= 1 + toPointOnePercent(Game.lumpsTotal);
-        if (Game.Has(cpsSpecial[2]) && Game.BuildingsOwned % 10 == 0) cpsMultiplier *= 2;
-        //if (Game.Has('Divine gains')) cps *= 1 + toPointOnePercent(Game.goldenClicks);
-        //if (Game.Has('Divine buildings')) cps *= 1 + toPointOnePercent(Game.BuildingsOwned);
-        //if (Game.Has('Divine savings') && Game.Objects['Farm']?.minigame?.harvestsTotal) cps *= 1 + (Game.Objects['Farm'].minigame.harvestsTotal / 1000);
+        if (Game.Has(cpsSpecial[2]) && Game.BuildingsOwned % 10 == 0) cpsMultiplier *= 1 + toPercent(100);
+        if (Game.Has(cpsSpecial[3])) cpsMultiplier *= 1 + toPointOnePercent(Game.goldenClicks);
+        if (Game.Has(cpsSpecial[4])) cpsMultiplier *= 1 + toPointOnePercent(Game.BuildingsOwned);
+        if (Game.Has(cpsSpecial[5]) && Game.Objects['Farm']?.minigame?.harvestsTotal) cpsMultiplier *= 1 + toPointOnePercent(Game.Objects['Farm'].minigame.harvestsTotal);
         return cps * cpsMultiplier;
     });
 
