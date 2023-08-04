@@ -1,15 +1,12 @@
 {
- "Name": "More heavenly upgrades",
- "ID": "More heavenly upgrades",
- "Author": "Ruby-Chan",
- "Description": "This mod basically adds a ton of new heavenly upgrades, primarily, upgrades to grow sugar lumps at extreme speeds, but also some of them will give you a head start in your next ascension. Check out for yourself! You will need CCSE for this to work",
- "ModVersion": 1.12,
- "GameVersion": 2.043,
- "Date": "28/01/2022",
- "Dependencies": [
-  "CCSE"
- ],
- "Disabled": 1,
- "AllowSteamAchievs": 1,
- "Workshop": "2732094639"
+	"Name": "More Heavenly Upgrades Remastered",
+	"ID": "More Heavenly Upgrades Remastered",
+	"Author": "0x415374",
+	"Description": "This mod basically adds a ton of new heavenly upgrades, containing three branches: Utility, Cps and Sugar Lumps. It's based on the 'More heavenly upgrades' mod by Ruby-Chan",
+	"ModVersion": 2.00,
+	"GameVersion": 2.052,
+	"Date": "03/08/2023",
+	"Dependencies": ["CCSE"],
+	"Disabled": 1,
+	"AllowSteamAchievs": 1
 }

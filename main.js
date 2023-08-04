@@ -1,5 +1,3 @@
-//new Game.Upgrade('Lucky payout',loc("<b>+%1%</b> prestige level effect on CpS.<br><b>+%2%</b> golden cookie effect duration.<br><b>+%3%</b> golden cookie lifespan.",[1,1,1])+'<q>This upgrade took an oath of complete seclusion from the rest of the world and only appears when your prestige level contains four 7\'s.</q>',77777777,[24,15]);Game.last.pool='prestige';Game.last.parents=['Lucky number','Decisive fate'];Game.last.showIf=function(){return (Math.ceil(((Game.prestige+'').split('7').length-1))>=4);};
-
 //Created by 0x415374
 //Based on MoreHeavenlyUpgrades by RubyChan42
 
@@ -29,26 +27,26 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
     //Map that contains building tier as keys which maps to an enum of [name, {Sugar Lump}staticReduce, {Sugar Lump}scalingReduce, {CPS}baseCps]
     const buildingTiers = {
-        '1': ['Cursor', 'Lump rubbers', 'Velvet gloves', 'Embrace Cursors', 'Cursors on your hands'],
-        '2': ['Grandma', 'Lump caregiver', 'My lovely sugar lumps', 'Embrace Grandmas', 'Gramdmas on your hands'],
-        '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process', 'Embrace Farms', 'Farms on your hands'],
-        '4': ['Mine', 'Sugar water', 'Dirt extraction process', 'Embrace Mines', 'Mines on your hands'],
-        '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process', 'Embrace Factories', 'Factories on your hands'],
-        '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process', 'Embrace Banks', 'Banks on your hands'],
-        '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process', 'Embrace Temples', 'Temples on your hands'],
-        '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process', 'Embrace Wizard towers', 'Wizard towers on your hands'],
-        '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process', 'Embrace Shipment', 'Shipments on your hands'],
-        '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process', 'Embrace Alchemy labs', 'Alchemy labs on your hands'],
-        '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process', 'Embrace Portals', 'Portals on your hands'],
-        '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process', 'Embrace Time machine','Time machines on your hands'],
-        '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process', 'Embrace Antimatter condensers', 'Antimatter condensers on your hands'],
-        '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process', 'Embrace Prisms', 'Prisms on your hands'],
-        '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process', 'Embrace Chancemakers', 'Chancemakers on your hands'],
-        '16': ['Fractal engine', 'THE Even truer and eldererer Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process', 'Embrace Fractal engines', 'Fractal engines on your hands'],
-        '17': ['Javascript console', 'Mind opening', 'True evil process', 'Embrace Javascript consoles', 'Javascript consoles on your hands'],
-        '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process', 'Embrace Idleverses', 'Idleverses on your hands'],
-        '19': ['Cortex baker', 'The ancient cookie dragon', 'Super Brainz', 'Embrace Cortex bakers', 'Cortex bakers on your hands'],
-        '20': ['You', 'A book', 'I', 'Embrace Yoursef', 'You on your hands']
+        '1': ['Cursor', 'Lump rubbers', 'Velvet gloves', 'Embrace Cursors', 'Cursors on your hands', 'Better Luck I'],
+        '2': ['Grandma', 'Lump caregiver', 'My lovely sugar lumps', 'Embrace Grandmas', 'Gramdmas on your hands', 'Better Luck II'],
+        '3': ['Farm', 'Sugar lump farm', 'Sugar Farming process', 'Embrace Farms', 'Farms on your hands', 'Better Luck III'],
+        '4': ['Mine', 'Sugar water', 'Dirt extraction process', 'Embrace Mines', 'Mines on your hands', 'Better Luck IV'],
+        '5': ['Factory', 'Specialized greenhouse', 'Overclocked potion making process', 'Embrace Factories', 'Factories on your hands', 'Better Luck V'],
+        '6': ['Bank', 'Sweet and tasty fertilizer', 'Lump banking process', 'Embrace Banks', 'Banks on your hands', 'Better Luck VI'],
+        '7': ['Temple', 'Lofi hip-hop beats to chill and grow to', 'Praying process', 'Embrace Temples', 'Temples on your hands', 'Better Luck VII'],
+        '8': ['Wizard tower', 'A nice fairy', 'Sugar magical growing process', 'Embrace Wizard towers', 'Wizard towers on your hands', 'Better Luck VIII'],
+        '9': ['Shipment', 'Lump-growing calculator', 'Intergalactic Extrauniversal investigation process', 'Embrace Shipment', 'Shipments on your hands', 'Better Luck IX'],
+        '10': ['Alchemy lab', 'Lump-growing potion', 'Overclocked potion crafting process', 'Embrace Alchemy labs', 'Alchemy labs on your hands', 'Better Luck X'],
+        '11': ['Portal', 'Praying to the elder ones', 'Other-worldly lump-growing process', 'Embrace Portals', 'Portals on your hands', 'Better Luck XI'],
+        '12': ['Time machine', 'Benevolent elder Lump god', 'Time-altering process', 'Embrace Time machine','Time machines on your hands', 'Better Luck XII'],
+        '13': ['Antimatter condenser', 'Elder Lump demon', 'Multiversal antimatterial process', 'Embrace Antimatter condensers', 'Antimatter condensers on your hands', 'Better Luck XIII'],
+        '14': ['Prism', 'True Elder Lump demon', 'Ilumination-based growing process', 'Embrace Prisms', 'Prisms on your hands', 'Better Luck XIV'],
+        '15': ['Chancemaker', 'Even Elder Lump demon', 'Sheer luck lump-growing process', 'Embrace Chancemakers', 'Chancemakers on your hands', 'Better Luck XV'],
+        '16': ['Fractal engine', 'THE Even truer and eldererer Lump demon', 'Extreme lump-growing with recursive lumping and lump recursiving process', 'Embrace Fractal engines', 'Fractal engines on your hands', 'Better Luck XVI'],
+        '17': ['Javascript console', 'Mind opening', 'True evil process', 'Embrace Javascript consoles', 'Javascript consoles on your hands', 'Better Luck XVII'],
+        '18': ['Idleverse', 'Santa-summoning spell', 'Idle lump-growing process', 'Embrace Idleverses', 'Idleverses on your hands', 'Better Luck XVIII'],
+        '19': ['Cortex baker', 'The ancient cookie dragon', 'Super Brainz', 'Embrace Cortex bakers', 'Cortex bakers on your hands', 'Better Luck XIX'],
+        '20': ['You', 'A book', 'I', 'Embrace Yoursef', 'You on your hands', 'Better Luck XX']
     };
 
     //Sugar lumps
@@ -206,16 +204,16 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         //Sugar Lumps TIER 2
         CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[2], `You are an adept sugar lump farmer. The minimum time to grow a sugar lump is reduced by ${minTimeReduce/minute} minutes`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -1900, [buildingTiers[1][1], buildingTiers[1][2], buildingTiers[2][1], buildingTiers[2][2], buildingTiers[3][1], buildingTiers[3][2], buildingTiers[4][1], buildingTiers[4][2], buildingTiers[5][1], buildingTiers[5][2]]);
         
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][1], `Sugar lumps mature <b>${11*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 0], -750, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][2], `Sugar lumps mature <b>${11*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[6][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 1], -650, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][1], `Sugar lumps mature <b>${12*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 0], -450, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][2], `Sugar lumps mature <b>${12*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[7][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 1], -350, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][1], `Sugar lumps mature <b>${13*staticBasereduce/minute} minutes</b> soonecial[5]er`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 0], -150, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][2], `Sugar lumps mature <b>${13*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[8][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 1], -50, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][1], `Sugar lumps mature <b>${14*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 0], 150, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][2], `Sugar lumps mature <b>${14*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[9][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 1], 250, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][1], `Sugar lumps mature <b>${15*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 0], 450, -2100, [sugarLumpSpecial[2]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][2], `Sugar lumps mature <b>${15*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[10][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 1], 550, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][1], `Sugar lumps mature <b>${6*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 0], -750, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][2], `Sugar lumps mature <b>${6*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[6][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [6, 1], -650, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][1], `Sugar lumps mature <b>${7*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 0], -450, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][2], `Sugar lumps mature <b>${7*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[7][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [7, 1], -350, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][1], `Sugar lumps mature <b>${8*staticBasereduce/minute} minutes</b> soonecial[5]er`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 0], -150, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][2], `Sugar lumps mature <b>${8*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[8][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [8, 1], -50, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][1], `Sugar lumps mature <b>${9*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 0], 150, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][2], `Sugar lumps mature <b>${9*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[9][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [9, 1], 250, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][1], `Sugar lumps mature <b>${10*staticBasereduce/minute} minutes</b> sooner`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 0], 450, -2100, [sugarLumpSpecial[2]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][2], `Sugar lumps mature <b>${10*scalingBaseReduce/second} seconds</b> sooner for each ${buildingTiers[10][0]}`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [10, 1], 550, -2100, [sugarLumpSpecial[2]]);
 
         //Sugar Lumps TIER 3
         CCSE.NewHeavenlyUpgrade(sugarLumpSpecial[3], `You are an advanced sugar lump farmer. The minimum time to grow a sugar lump is reduced by ${minTimeReduce/minute} minutes`, heavenlyUpgradeBase * (heavenlyUpgradePow ** lumpUpgrade++), [15, 9], -100, -2300, [buildingTiers[6][1], buildingTiers[6][2], buildingTiers[7][1], buildingTiers[7][2], buildingTiers[8][1], buildingTiers[8][2], buildingTiers[9][1], buildingTiers[9][2], buildingTiers[10][1], buildingTiers[10][2]]);
@@ -298,121 +296,129 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         });
 
 
-        //Utility Block
-        //Utility TIER 1
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Channels your luck and unlocks an missing instances of: Lucky digit, Lucky number and/or Lucky payout for their respective cost.<br>Also unlocks new Game+`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], -2500, -2500, ['Legacy'], function () {
+        // Utility Block
+        // UTILITY TIER 1
+        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Channels your luck and unlocks an missing instances of: Lucky digit, Lucky number and/or Lucky payout for their respective cost.<br>Also unlocks new Game+`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1000, ['Legacy'], function () {
             if (!Game.Has('Lucky digit')) Game.Upgrades['Lucky digit'].buy();
             if (!Game.Has('Lucky number')) Game.Upgrades['Lucky number'].buy();
             if (!Game.Has('Lucky payout')) Game.Upgrades['Lucky payout'].buy();
         });
-        Game.last.canBuyFunc = function () {
+        allLuckies.showIf = function () {
             let heavenlyChipsRequirement = 0;
-            heavenlyChipsRequirement += utilitySpecial[1].getPrice();
+            heavenlyChipsRequirement += Game.Upgrades[utilitySpecial[1]].getPrice();
             if (!Game.Has('Lucky digit')) heavenlyChipsRequirement += Game.Upgrades['Lucky digit'].getPrice();
             if (!Game.Has('Lucky number')) heavenlyChipsRequirement += Game.Upgrades['Lucky number'].getPrice();
             if (!Game.Has('Lucky payout')) heavenlyChipsRequirement += Game.Upgrades['Lucky payout'].getPrice();
+            return heavenlyChipsRequirement < Game.heavenlyChips;
         }
 
+        //UTILITY TIER 2
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1750, -1000, [utilitySpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1500, -1050, [buildingTiers[1][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1350, -1150, [buildingTiers[2][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1250, -1300, [buildingTiers[3][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1500, [buildingTiers[4][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1700, [buildingTiers[5][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1900, [buildingTiers[6][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2100, [buildingTiers[7][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2300, [buildingTiers[8][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2500, [buildingTiers[9][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1300, -2600, [buildingTiers[10][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1500, -2600, [buildingTiers[11][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2500, [buildingTiers[12][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2300, [buildingTiers[13][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2100, [buildingTiers[14][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1900, [buildingTiers[15][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1700, [buildingTiers[16][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1550, [buildingTiers[17][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1700, -1450, [buildingTiers[18][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often and the effect lasts ${buffDuration}% longer`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1850, -1400, [buildingTiers[19][5]]);
+
+        //UTILITY TIER 5
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[2], `Increases the chance of random drops by 50%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1400, [buildingTiers[20][5]])
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[3], `Your wizards are no longer lazy. They always work at the maximum efficiency, independant of your current magic value <q>I was too lazy to adjust the tooltip in the wizard tower</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1200, [utilitySpecial[1], utilitySpecial[2]])
 
 
-
-
-        // Game.cookies = 0;
-        // Game.cookiesEarned = 0;
-        // Game.cookiesReset = 0;
-        // Game.heavenlyChips = 0
-        // Game.prestige = 0;
-        // if (Game.Has('Egg')) Game.Lock('Egg');
-        // Game.PrestigeUpgrades.forEach((e) => Game.Lock(e.name))
-        // for (let tier in buildingTiers) {
-        //     let buildings = buildingTiers[tier];
-        //     for (let i = 1; i < buildings.length; i++) {
-        //         Game.Lock(buildings[i]);
-        //     }
-        // }
-        // for (let value in sugarLumpSpecial) {
-        //     Game.Lock(sugarLumpSpecial[value]);
-        // }
-        // for (let value in cpsSpecial) {
-        //     Game.Lock(cpsSpecial[value]);
-        // }
-
-        // Game.dropRateMult
-        //Game.customShimmerTypesAll.getTimeMod = []; // this is spawntimer
-        //		if(!Game.customShimmerTypes['golden'].customEffectDurMod) Game.customShimmerTypes['golden'].customEffectDurMod = []; // buff duration
-		//if(!Game.customShimmerTypes['golden'].customMult) Game.customShimmerTypes['golden'].customMult = []; // this sucks, can still use it for dummy upgrades  - must inject into buffs to increase effect
-		//if(!Game.customShimmerTypes['golden'].customBuff) Game.customShimmerTypes['golden'].customBuff = []; // create own buff? maybe elder frenzy into golden cookie effects
-        // CCSE.NewBuff(name func) // create Buff
-
-        // return number < 1 to reduce time
-        // 0.95**20 seems to be the sweetspot i am looking for
-        
-        // Game.customShimmerTypesAll.getTimeMod.push(function () {
-        //     let multiplier = 1;
-        //     multiplier *= (0.95**20)
-        //     return multiplier;
-        // });
-        // Game.customShimmerTypes['golden'].customEffectDurMod.push(function () {
-        //     let multiplier = 1;
-        //     multiplier *= (1.05**20)
-        //     return multiplier;
-        // });
-
-
-
-        //'Lucky digit'
-        // 777
-        //Game.Upgrades['Lucky digit'].bought = 1
-        // 'Lucky number'
-        // 77_777
-
-        // 'Lucky payout'
-        // 77_777_777
-
-
-
-        // Game.dropRateMult
-        // turn this up to at least x2
-
-
-        //Game.Notify('Hi', '' + (1 + toPointOnePercent(Game.lumpsTotal)), [19, 7], 6);
-        //Game.Notify('Hi', '' + Game.canLumps(), [19, 7], 6);
-
+        //Other necessary upgrades
+        //TODO Does not work right now
+        newGamePlus = CCSE.NewUpgrade('NewGamePlus', 'Again!', 500_000, [30, 20]);
+        newGamePlus.pool = 'toggle';
+        newGamePlus.canBuyFunc = function () { return false };
+        /*
+        newGamePlus.clickFunction = function (sure) {
+            if (!sure) {
+                Game.Prompt(
+                  '<id Ascend><h3>' + loc("Ascend") + '</h3>' +
+                  '<div class="block">' +
+                  tinyIcon([19, 7]) +
+                  '<div class="line"></div>' +
+                  loc("Do you REALLY want to ascend?<div class=\"line\"></div>You will lose your progress and start over from scratch.<div class=\"line\"></div>All your cookies will be converted into prestige and heavenly chips.") +
+                  '<div class="line"></div>' +
+                  (Game.canLumps() ?
+                    loc("You will keep your achievements, building levels and sugar lumps.") :
+                    loc("You will keep your achievements.")
+                  ) +
+                  '<div class="optionBox">' +
+                  '<a class="option smallFancyButton" style="margin:16px;padding:8px 16px;animation:rainbowCycle 5s infinite ease-in-out,pucker 0.2s ease-out;box-shadow:0px 0px 0px 1px #000,0px 0px 1px 2px currentcolor;background:linear-gradient(to bottom,transparent 0%,currentColor 500%);width:auto;text-align:center;" ' + Game.clickStr + '="PlaySound(\'snd/tick.mp3\');Game.ClosePrompt();Game.Updates.NewGamePlus.clickFunction(1);" id="promptOption0">' + loc("Ascend") + '</a>' +
+                  '</div>' +
+                  '</div>',
+                  [
+                    [loc("Yes"), 'Game.ClosePrompt();Game.Updates.NewGamePlus.clickFunction(1);', 'float:left;display:none;'],
+                    [loc("Cancel"), 0, 'float:right']
+                  ]
+                );
+            } else {
+                Object.values(buildingTiers).forEach((e) => Game.Objects[e[0]].amount = 0);
+                Game.cookies = 0;
+                Game.cookiesEarned = 0;
+                Game.cookiesReset = 0;
+                Game.heavenlyChips = 0
+                Game.prestige = 0;
+                Game.permanentUpgrades = [-1, -1, -1, -1, -1];
+                //if (Game.Has('Egg')) Game.Lock('Egg');
+                Game.PrestigeUpgrades.forEach((e) => Game.Lock(e.name));
+                for (let tier in buildingTiers) {
+                    let buildings = buildingTiers[tier];
+                    for (let i = 1; i < buildings.length; i++) {
+                        Game.Lock(buildings[i]);
+                    }
+                }
+                for (let value in sugarLumpSpecial) {
+                    Game.Lock(sugarLumpSpecial[value]);
+                }s
+                for (let value in cpsSpecial) {
+                    Game.Lock(cpsSpecial[value]);
+                }
+                Game.Ascend(true);
+            }
+        };
+        */
+        //Utility calculations
+        Game.customShimmerTypesAll.getTimeMod.push(function () {
+            let multiplier = 1;
+            Object.values(buildingTiers).forEach((e) => Game.Has(e[5]) ? multiplier *= 0.95 : multiplier);
+            return multiplier;
+        });
+        Game.customShimmerTypes['golden'].customEffectDurMod.push(function () {
+            let multiplier = 1;
+            Object.values(buildingTiers).forEach((e) => Game.Has(e[5]) ? multiplier *= 1.05 : multiplier);
+            return multiplier;
+        });
+        Game.customDropRateMult.push(function () {
+            let dropRate = 1;
+            if (Game.Has(utilitySpecial[2])) dropRate *= 1 + toPercent(50);
+            return dropRate;
+        })
 
     }
 
 
-
-/*
-    Game.registerHook('logic', function() {
-        Game.cookies = 0;
-        Game.cookiesEarned = 0;
-        Game.cookiesReset = 0;
-        Game.heavenlyChips = 0
-        Game.prestige = 0;
-        if (Game.Has('Egg')) Game.Lock('Egg');
-        Game.PrestigeUpgrades.forEach((e) => Game.Lock(e.name))
-        for (let tier in buildingTiers) {
-            let buildings = buildingTiers[tier];
-            for (let i = 1; i < buildings.length; i++) {
-                Game.Lock(buildings[i]);
-            }
-        }
-        for (let value in sugarLumpSpecial) {
-            Game.Lock(sugarLumpSpecial[value]);
-        }
-        for (let value in cpsSpecial) {
-            Game.Lock(cpsSpecial[value]);
-        }
-    }); 
-*/
-
     //Game Hooks
     Game.registerHook('logic', function () {
-        if (Game.Objects['Wizard tower']?.minigame?.magic && Game.Objects['Wizard tower']?.minigame?.magicPS) Game.Objects['Wizard tower'].minigame.magic += 0.002 - Game.Objects['Wizard tower'].minigame.magicPS;
+        if (Game.Has(utilitySpecial[3]) && Game.Objects['Wizard tower']?.minigame?.magic && Game.Objects['Wizard tower']?.minigame?.magicPS) Game.Objects['Wizard tower'].minigame.magic += 0.002 - Game.Objects['Wizard tower'].minigame.magicPS;
         if (Game.Has(sugarLumpSpecial[6])) Game.Unlock('Golden summoner');
         goldenSummoner.priceLumps = Game.lumps > 1 ? Game.lumps : 1;
-        //if (Game.Has(utilitySpecial[1])) Game.Unlock('new Game+');
+        if (Game.Has(utilitySpecial[1])) Game.Unlock('NewGamePlus');
     });
 
    Game.registerHook('cps', function(cps) {
