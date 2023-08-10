@@ -138,18 +138,17 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     }
 
 
-
     MoreHeavenlyUpgradesRemastered.init = function() {
         MoreHeavenlyUpgradesRemastered.isLoaded = 1;
 
         //New Game Plus Achievemens
-        CCSE.NewAchievement(NGPAchievements[1], `You embarked on your second journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 0]);
-        CCSE.NewAchievement(NGPAchievements[2], `You embarked on your third journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 1]);
-        CCSE.NewAchievement(NGPAchievements[3], `You embarked on your fourth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 2]);
-        CCSE.NewAchievement(NGPAchievements[4], `You embarked on your fifth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 13]);
-        CCSE.NewAchievement(NGPAchievements[5], `You embarked on your sixth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 14]);
-        CCSE.NewAchievement(NGPAchievements[6], `You embarked on your seventh journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 15]);
-        CCSE.NewAchievement(NGPAchievements[7], `You embarked on your eigth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 16]);
+        CCSE.NewAchievement(NGPAchievements[1], `You embarked on your second journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 0]);
+        CCSE.NewAchievement(NGPAchievements[2], `You embarked on your third journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 1]);
+        CCSE.NewAchievement(NGPAchievements[3], `You embarked on your fourth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 2]);
+        CCSE.NewAchievement(NGPAchievements[4], `You embarked on your fifth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 13]);
+        CCSE.NewAchievement(NGPAchievements[5], `You embarked on your sixth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 14]);
+        CCSE.NewAchievement(NGPAchievements[6], `You embarked on your seventh journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 15]);
+        CCSE.NewAchievement(NGPAchievements[7], `You embarked on your eigth journey to unveil the enigmas of cookies.<br>Cookie production multiplier <b>+${NGPCpsBuffPercent}% permanently</b>.<br><u>Heavenly Upgrades are more expensive.</u>`, [18, 16]);
 
 
         //CPS blocks
@@ -343,7 +342,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         // Utility Block
         // UTILITY TIER 1
-    let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!<u>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1000, ['Legacy'], function () {
+        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!<u>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1000, ['Legacy'], function () {
             if (!Game.Has('Lucky digit')) Game.Upgrades['Lucky digit'].buy();
             if (!Game.Has('Lucky number')) Game.Upgrades['Lucky number'].buy();
             if (!Game.Has('Lucky payout')) Game.Upgrades['Lucky payout'].buy();
@@ -373,14 +372,16 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         CCSE.NewHeavenlyUpgrade(buildingTiers[13][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2500, [buildingTiers[12][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[14][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2300, [buildingTiers[13][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[15][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2100, [buildingTiers[14][5]]);
+
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[2], `Random drops are <b>50% more common</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -2300, [buildingTiers[9][5], buildingTiers[14][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[16][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1900, [buildingTiers[15][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[17][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1700, [buildingTiers[16][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[18][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1550, [buildingTiers[17][5]]);
+        
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[3], `Your wizards are no longer lazy. They always work at the maximum efficiency, independant of your current magic value.<q>I was too lazy to adjust the tooltip in the Grimoire</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -1700, [buildingTiers[6][5], buildingTiers[17][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[19][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1700, -1450, [buildingTiers[18][5]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[20][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1850, -1400, [buildingTiers[19][5]]);
         
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[2], `Random drops are <b>50% more common</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -2300, [buildingTiers[9][5], buildingTiers[14][5]]);
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[3], `Your wizards are no longer lazy. They always work at the maximum efficiency, independant of your current magic value.<q>I was too lazy to adjust the tooltip in the Grimoire</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -1700, [buildingTiers[6][5], buildingTiers[17][5]]);
    
         //UTILITY TIER 3
         CCSE.NewHeavenlyUpgrade(buildingTiers[1][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2250, -1000, [utilitySpecial[1]]);
@@ -397,15 +398,17 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         CCSE.NewHeavenlyUpgrade(buildingTiers[12][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2500, -2600, [buildingTiers[11][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[13][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2500, [buildingTiers[12][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[14][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2300, [buildingTiers[13][6]]);
+        
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[4], `You have a <b>1 in 1000</b> chance to gain a sugar lump each second.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -2300, [buildingTiers[9][6], buildingTiers[14][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[15][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2100, [buildingTiers[14][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[16][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1900, [buildingTiers[15][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[17][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1700, [buildingTiers[16][6]]);
+        
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[5], `Wrinklers are <b>twice as likely</b> to appear.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -1700, [buildingTiers[6][6], buildingTiers[17][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[18][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1550, [buildingTiers[17][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[19][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2300, -1450, [buildingTiers[18][6]]);
         CCSE.NewHeavenlyUpgrade(buildingTiers[20][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2150, -1400, [buildingTiers[19][6]]);
 
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[4], `You have a <b>1 in 1000</b> chance to gain a sugar lump each second.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -2300, [buildingTiers[9][6], buildingTiers[14][6]]);
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[5], `Wrinklers are <b>twice as likely</b> to appear.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -1700, [buildingTiers[6][6], buildingTiers[17][6]]);
 
         //UTILITY TIER 4
         CCSE.NewHeavenlyUpgrade(utilitySpecial[6], `You seem to always get the best deals! Buildings are <b>25% cheaper</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1400, [buildingTiers[20][5], buildingTiers[20][6]]);
@@ -425,7 +428,25 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         });
 
         //Other necessary upgrades
-        newGamePlus = CCSE.NewUpgrade('New Game Plus', 'This becomes accessible once you\'ve obtained all heavenly upgrades.<br>Click for more information when unlocked!', 1, [30, 20]);
+        newGamePlus = CCSE.NewUpgrade('New Game Plus', 'Again!', 1, [24, 15]);
+        newGamePlus.descFunc = function () { 
+            let str = '';
+            let amount = 1;
+            Object.values(NGPAchievements).forEach((e) => {
+                if (Game.Achievements[e].won) {
+                    str += CCSE.MenuHelper.TinyIcon(Game.Achievements[e].icon);
+                    amount++;
+                }
+            })
+            return ('<div style="text-align:center;">' +
+            str + '<br>' +
+            'You are on your <b>' + amount +'.</b> journey to discover the truth about cookies.<br>' +
+            'You can start another journey, once you\'ve obtained all heavenly upgrades.<br>'+
+            '<div class="line"></div>'+
+            'All <b>heavenly upgrades</b> will be sacrificed.<br>All your <b>prestige</b> will be sacrificed.<br>All <b>cookie related stats</b> will be reset.' +
+            '<div class="line"></div>' + 
+            'For each new journey started, you will gain a permanent <b>cookie production multiplier</b>.</br><u>However all heavenly upgrades will be more expensive.</u>' 
+        )}
         newGamePlus.pool = 'toggle';
         newGamePlus.canBuyFunc = function () {
             if (Game.cookies < 1) return false;
@@ -447,11 +468,11 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                   '<div class="block">' +
                   tinyIcon([19, 7]) +
                   '<div class="line"></div>' +
-                  "Do you REALLY want to start a new Game?<div class=\"line\"></div>You will lose all your heavenly Upgrades and ascend instantly.<div class=\"line\"></div>You will gain a boost to your CpS but all heavenly upgrades will be more expensive!" +
+                  "Do you REALLY want to start a new Game?<div class=\"line\"></div>You will lose ALL your heavenly upgrades and prestige. Your cookie production stats will be reset.<div class=\"line\"></div>You will gain a boost to your CpS but all heavenly upgrades will be more expensive!" +
                   '<div class="line"></div>' +
                     "You will keep your achievements, building levels and sugar lumps." +
                   '<div class="optionBox">' +
-                  '<a class="option smallFancyButton" style="margin:16px;padding:8px 16px;animation:rainbowCycle 5s infinite ease-in-out,pucker 0.2s ease-out;box-shadow:0px 0px 0px 1px #000,0px 0px 1px 2px currentcolor;background:linear-gradient(to bottom,transparent 0%,currentColor 500%);width:auto;text-align:center;" ' + Game.clickStr + '="PlaySound(\'snd/tick.mp3\');Game.ClosePrompt();Game.Upgrades.NewGamePlus.clickFunction(1);" id="promptOption0">' + "Again!" + '</a>' +
+                  '<a class="option smallFancyButton" style="margin:16px;padding:8px 16px;animation:rainbowCycle 5s infinite ease-in-out,pucker 0.2s ease-out;box-shadow:0px 0px 0px 1px #000,0px 0px 1px 2px currentcolor;background:linear-gradient(to bottom,transparent 0%,currentColor 500%);width:auto;text-align:center;" ' + Game.clickStr + '="PlaySound(\'snd/tick.mp3\');Game.ClosePrompt();Game.Upgrades["New Game Plus"].clickFunction(1);" id="promptOption0">' + "Again!" + '</a>' +
                   '</div>' +
                   '</div>',
                   [
@@ -574,6 +595,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             if (Game.Upgrades[i].pool == 'prestige') {
                 Game.Upgrades[i].basePrice = Math.ceil(Game.Upgrades[i].basePrice * (heavenlyUpgradePow ** ngpPriceIncrease));
             }
+        //newGamePlus.descFunc();
         }
        if (Game.Has(utilitySpecial[1])) {
             //Set maxduration for every buff
