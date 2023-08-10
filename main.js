@@ -3,7 +3,7 @@
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.100';
+MoreHeavenlyUpgradesRemastered.version = '2.102';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
 //debug
@@ -156,71 +156,69 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         CCSE.NewHeavenlyUpgrade(cpsSpecial[1], `As long as the total number of buildings is divisible by 10 all cookie production is <b>multiplied by 2</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -450, ['Keepsakes']);
 
         //CPS TIER 1
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Each ${buildingTiers[1][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[1][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [0, 32], -1750, -500, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Each ${buildingTiers[2][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[2][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [1, 32], -1600, -650, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Each ${buildingTiers[3][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[3][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [2, 32], -1900, -550, [buildingTiers[1][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Each ${buildingTiers[4][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[4][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [3, 32], -1700, -800, [buildingTiers[2][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Each ${buildingTiers[5][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[5][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [4, 32], -2100, -650, [buildingTiers[3][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Each ${buildingTiers[6][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[6][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [15, 32], -1900, -900, [buildingTiers[4][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Each ${buildingTiers[7][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[7][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [16, 32], -2200, -750, [buildingTiers[5][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Each ${buildingTiers[8][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[8][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [17, 32], -2100, -950, [buildingTiers[6][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][3], `Each ${buildingTiers[1][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[1][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [0, 32], -1750, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][3], `Each ${buildingTiers[2][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[2][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [1, 32], -1600, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][3], `Each ${buildingTiers[3][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[3][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [2, 32], -1900, -550, [buildingTiers[1][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][3], `Each ${buildingTiers[4][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[4][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [3, 32], -1700, -800, [buildingTiers[2][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][3], `Each ${buildingTiers[5][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[5][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [4, 32], -2100, -650, [buildingTiers[3][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][3], `Each ${buildingTiers[6][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[6][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [15, 32], -1900, -900, [buildingTiers[4][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][3], `Each ${buildingTiers[7][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[7][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [16, 32], -2200, -750, [buildingTiers[5][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][3], `Each ${buildingTiers[8][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[8][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [17, 32], -2100, -950, [buildingTiers[6][3]]);
         CCSE.NewHeavenlyUpgrade(cpsSpecial[2], `Increases you CPS by .1% for every Sugar Lump collected, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [23, 18], -2300, -950, [buildingTiers[7][3], buildingTiers[8][3]]);
 
         //CPS TIER 2
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][3], `Each ${buildingTiers[9][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[9][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [5, 32], -1250, -500, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Each ${buildingTiers[10][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[10][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [6, 32], -1400, -650, [cpsSpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Each ${buildingTiers[11][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[11][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [7, 32], -1100, -550, [buildingTiers[9][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Each ${buildingTiers[12][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[12][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [8, 32], -1300, -800, [buildingTiers[10][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][3], `Each ${buildingTiers[13][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[13][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [13, 32], -900, -650, [buildingTiers[11][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][3], `Each ${buildingTiers[14][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[14][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [14, 32], -1100, -900, [buildingTiers[12][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][3], `Each ${buildingTiers[15][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[15][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [19, 32], -800, -750, [buildingTiers[13][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][3], `Each ${buildingTiers[16][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[16][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [20, 32], -900, -950, [buildingTiers[14][3]]);
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[3], `Increases CPS by .1% per golden cookie clicked, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -700, -950, [buildingTiers[15][3], buildingTiers[16][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][3], `Each ${buildingTiers[9][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[9][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [5, 32], -1250, -500, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][3], `Each ${buildingTiers[10][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[10][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [6, 32], -1400, -650, [cpsSpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][3], `Each ${buildingTiers[11][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[11][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [7, 32], -1100, -550, [buildingTiers[9][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][3], `Each ${buildingTiers[12][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[12][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [8, 32], -1300, -800, [buildingTiers[10][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][3], `Each ${buildingTiers[13][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[13][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [13, 32], -900, -650, [buildingTiers[11][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][3], `Each ${buildingTiers[14][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[14][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [14, 32], -1100, -900, [buildingTiers[12][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][3], `Each ${buildingTiers[15][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[15][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [19, 32], -800, -750, [buildingTiers[13][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][3], `Each ${buildingTiers[16][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[16][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [20, 32], -900, -950, [buildingTiers[14][3]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[3], `Increases CPS by .1% per golden cookie clicked, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [24, 18], -700, -950, [buildingTiers[15][3], buildingTiers[16][3]]);
 
 
         //CPS TIER 3
-        let stem = CCSE.NewHeavenlyUpgrade(buildingTiers[17][3], `Each ${buildingTiers[17][0]} by ${baseCpsIncrease}% base CpS per ${buildingTiers[17][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [32, 32], -1500, -600, [cpsSpecial[1]]);
+        let stem = CCSE.NewHeavenlyUpgrade(buildingTiers[17][3], `Each ${buildingTiers[17][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[17][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [32, 32], -1500, -600, [cpsSpecial[1]]);
         stem.showIf = function () {
             if (Game.Has(cpsSpecial[2]) && Game.Has(cpsSpecial[3])) return true;
         }
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][3], `Each ${buildingTiers[18][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[18][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [33, 32], -1500, -750, [buildingTiers[17][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][3], `Each ${buildingTiers[19][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[19][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [34, 32], -1500, -900, [buildingTiers[18][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][3], `Each ${buildingTiers[20][0]} gains ${baseCpsIncrease}% base CpS per ${buildingTiers[20][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [35, 32], -1500, -1050, [buildingTiers[19][3]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][4], `${buildingTiers[1][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -1200, [buildingTiers[20][3]]);     
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][4], `${buildingTiers[2][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -1350, [buildingTiers[1][4]]);
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[4], `Increases CPS by .1% per building owned, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -1500, [buildingTiers[2][4]]); 
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][3], `Each ${buildingTiers[18][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[18][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [33, 32], -1500, -750, [buildingTiers[17][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][3], `Each ${buildingTiers[19][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[19][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [34, 32], -1500, -900, [buildingTiers[18][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][3], `Each ${buildingTiers[20][0]} gains <b>+${baseCpsIncrease}%</b> base CpS per ${buildingTiers[20][0]}</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [35, 32], -1500, -1050, [buildingTiers[19][3]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][4], `${buildingTiers[1][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [0, 29], -1500, -1200, [buildingTiers[20][3]]);     
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][4], `${buildingTiers[2][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [1, 29], -1500, -1350, [buildingTiers[1][4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[4], `Increases CPS by .1% per building owned, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [28, 18], -1500, -1500, [buildingTiers[2][4]]); 
             
         //CPS TIER 4
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][4], `${buildingTiers[3][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1575, -1500, [cpsSpecial[4]]);     
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][4], `${buildingTiers[4][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1675, -1525, [buildingTiers[3][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][4], `${buildingTiers[5][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1775, -1575, [buildingTiers[4][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][4], `${buildingTiers[6][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1825, -1650, [buildingTiers[5][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][4], `${buildingTiers[7][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1850, -1725, [buildingTiers[6][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][4], `${buildingTiers[8][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1850, -1825, [buildingTiers[7][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][4], `${buildingTiers[9][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1825, -1900, [buildingTiers[8][4]]);
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[5], `Increases CPS by .1% per mature plant harvested, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1725, -2000, [buildingTiers[9][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][4], `${buildingTiers[10][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1650, -1925, [cpsSpecial[5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][4], `${buildingTiers[11][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1575, -2000, [buildingTiers[10][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][4], `${buildingTiers[3][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [2, 29], -1575, -1500, [cpsSpecial[4]]);     
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][4], `${buildingTiers[4][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [3, 29], -1675, -1525, [buildingTiers[3][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][4], `${buildingTiers[5][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [4, 29], -1775, -1575, [buildingTiers[4][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][4], `${buildingTiers[6][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [15, 29], -1825, -1650, [buildingTiers[5][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][4], `${buildingTiers[7][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [16, 29], -1850, -1725, [buildingTiers[6][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][4], `${buildingTiers[8][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [17, 29], -1850, -1825, [buildingTiers[7][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][4], `${buildingTiers[9][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [5, 29], -1825, -1900, [buildingTiers[8][4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[5], `Increases CPS by .1% per mature plant harvested, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [29, 18], -1725, -2000, [buildingTiers[9][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][4], `${buildingTiers[10][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [6, 29], -1650, -1925, [cpsSpecial[5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][4], `${buildingTiers[11][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [7, 29], -1575, -2000, [buildingTiers[10][4]]);
 
         // //CPS TIER 5
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][4], `${buildingTiers[12][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1425, -1500, [cpsSpecial[4]]);     
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][4], `${buildingTiers[13][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1325, -1525, [buildingTiers[12][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][4], `${buildingTiers[14][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1225, -1575, [buildingTiers[13][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][4], `${buildingTiers[15][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1175, -1650, [buildingTiers[14][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][4], `${buildingTiers[16][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1150, -1725, [buildingTiers[15][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][4], `${buildingTiers[17][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1150, -1825, [buildingTiers[16][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][4], `${buildingTiers[18][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1175, -1900, [buildingTiers[17][4]]);
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[6], `Increases CPS by 1% per spell cast, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1275, -2000, [buildingTiers[18][4]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][4], `${buildingTiers[19][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1350, -1925, [cpsSpecial[6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][4], `${buildingTiers[20][0]} levels boost clicks by ${boostClick}%`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1425, -2000, [buildingTiers[19][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][4], `${buildingTiers[12][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [8, 29], -1425, -1500, [cpsSpecial[4]]);     
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][4], `${buildingTiers[13][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [13, 29], -1325, -1525, [buildingTiers[12][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][4], `${buildingTiers[14][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [14, 29], -1225, -1575, [buildingTiers[13][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][4], `${buildingTiers[15][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [19, 29], -1175, -1650, [buildingTiers[14][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][4], `${buildingTiers[16][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [20, 29], -1150, -1725, [buildingTiers[15][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][4], `${buildingTiers[17][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [32, 29], -1150, -1825, [buildingTiers[16][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][4], `${buildingTiers[18][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [33, 29], -1175, -1900, [buildingTiers[17][4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[6], `Increases CPS by 1% per spell cast, stacking additively`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 18], -1275, -2000, [buildingTiers[18][4]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][4], `${buildingTiers[19][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [34, 29], -1350, -1925, [cpsSpecial[6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][4], `${buildingTiers[20][0]} levels boost clicks by <b>${boostClick}%</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [35, 29], -1425, -2000, [buildingTiers[19][4]]);
 
         // //Final
-        CCSE.NewHeavenlyUpgrade(cpsSpecial[7], `Multiplies your CPS by ${1 * atheismMultiplier} if you have no Jade slot spirit, by ${2 * atheismMultiplier} if you have no Ruby slot spirit, and by ${3 * atheismMultiplier} if you have no Diamond slot spirit`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [22, 19], -1500, -2125, [buildingTiers[11][4], buildingTiers[20][4]]);
+        CCSE.NewHeavenlyUpgrade(cpsSpecial[7], `Multiplies your CPS by ${1 * atheismMultiplier} if you have no Jade slot spirit, by ${2 * atheismMultiplier} if you have no Ruby slot spirit, and by ${3 * atheismMultiplier} if you have no Diamond slot spirit`, heavenlyUpgradeBase * (heavenlyUpgradePow ** cpsUpgrade++), [27, 18], -1500, -2125, [buildingTiers[11][4], buildingTiers[20][4]]);
     
 
         //Building Cps calculation
-        //This contributes almost nothing to total CPS
-        //This messes uo the % distribution of buildings in the stats - maybe global additively stacking mult?
         for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
             Game.customBuildings[buildingTiers[i][0]].cpsMult.push(function () {
                 let cpsMultiplier = 1;
@@ -440,12 +438,12 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             })
             return ('<div style="text-align:center;">' +
             str + '<br>' +
-            'You are on your <b>' + amount +'.</b> journey to discover the truth about cookies.<br>' +
-            'You can start another journey, once you\'ve obtained all heavenly upgrades.<br>'+
+            'You are on your <b>' + amount +'. journey</b> to uncover the truth about cookies.<br>' +
+            'You can start another journey once you\'ve purchased all heavenly upgrades.<br>'+
             '<div class="line"></div>'+
             'All <b>heavenly upgrades</b> will be sacrificed.<br>All your <b>prestige</b> will be sacrificed.<br>All <b>cookie related stats</b> will be reset.' +
             '<div class="line"></div>' + 
-            'For each new journey started, you will gain a permanent <b>cookie production multiplier</b>.</br><u>However all heavenly upgrades will be more expensive.</u>' 
+            'For each new journey started, you will gain a permanent <b>cookie production multiplier</b>.</br><u>All heavenly upgrades will become more expensive.</u>' 
         )}
         newGamePlus.pool = 'toggle';
         newGamePlus.canBuyFunc = function () {
@@ -615,7 +613,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.100', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.102', [19, 7], 6);
 
 }
 
