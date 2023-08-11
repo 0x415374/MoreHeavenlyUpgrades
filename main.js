@@ -3,7 +3,7 @@
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.102';
+MoreHeavenlyUpgradesRemastered.version = '2.103';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
 //debug
@@ -99,7 +99,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
 
     //New Game Plus
-    const NGPCpsBuffPercent = 100;
+    const NGPCpsBuffPercent = 300;
     const NGPMhurPriceIncrease = 1;
     const NGPAchievements = {
         '1': 'New Game+',
@@ -340,7 +340,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         // Utility Block
         // UTILITY TIER 1
-        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!<u>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1000, ['Legacy'], function () {
+        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!<u>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [9, 9], 2000, -1000, ['Legacy'], function () {
             if (!Game.Has('Lucky digit')) Game.Upgrades['Lucky digit'].buy();
             if (!Game.Has('Lucky number')) Game.Upgrades['Lucky number'].buy();
             if (!Game.Has('Lucky payout')) Game.Upgrades['Lucky payout'].buy();
@@ -355,73 +355,73 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         }
 
         //UTILITY TIER 2
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1750, -1000, [utilitySpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1500, -1050, [buildingTiers[1][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1350, -1150, [buildingTiers[2][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1250, -1300, [buildingTiers[3][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1500, [buildingTiers[4][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1700, [buildingTiers[5][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -1900, [buildingTiers[6][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2100, [buildingTiers[7][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2300, [buildingTiers[8][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1200, -2500, [buildingTiers[9][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1300, -2600, [buildingTiers[10][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1500, -2600, [buildingTiers[11][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2500, [buildingTiers[12][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2300, [buildingTiers[13][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -2100, [buildingTiers[14][5]]);
-
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[2], `Random drops are <b>50% more common</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -2300, [buildingTiers[9][5], buildingTiers[14][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1900, [buildingTiers[15][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1700, [buildingTiers[16][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1600, -1550, [buildingTiers[17][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [10, 14], 1750, -1000, [utilitySpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [10, 14], 1500, -1050, [buildingTiers[1][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [10, 14], 1350, -1150, [buildingTiers[2][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [10, 14], 1250, -1300, [buildingTiers[3][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [10, 14], 1200, -1500, [buildingTiers[4][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [22, 6], 1200, -1700, [buildingTiers[5][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [22, 6], 1200, -1900, [buildingTiers[6][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [22, 6], 1200, -2100, [buildingTiers[7][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [22, 6], 1200, -2300, [buildingTiers[8][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [22, 6], 1200, -2500, [buildingTiers[9][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [23, 6], 1300, -2600, [buildingTiers[10][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [23, 6], 1500, -2600, [buildingTiers[11][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [23, 6], 1600, -2500, [buildingTiers[12][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [23, 6], 1600, -2300, [buildingTiers[13][5]]);
         
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[3], `Your wizards are no longer lazy. They always work at the maximum efficiency, independant of your current magic value.<q>I was too lazy to adjust the tooltip in the Grimoire</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 1400, -1700, [buildingTiers[6][5], buildingTiers[17][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1700, -1450, [buildingTiers[18][5]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 1850, -1400, [buildingTiers[19][5]]);
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[2], `Random drops are <b>50% more common</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 6], 1400, -2300, [buildingTiers[9][5], buildingTiers[14][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [23, 6], 1600, -2100, [buildingTiers[14][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [21, 33], 1600, -1900, [buildingTiers[15][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [21, 33], 1600, -1700, [buildingTiers[16][5]]);
+        
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[3], `Your wizards are no longer lazy. They always work at the maximum efficiency, independant of your current magic value.<q>I was too lazy to adjust the tooltip in the Grimoire</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [17, 5], 1400, -1700, [buildingTiers[6][5], buildingTiers[17][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [21, 33], 1600, -1550, [buildingTiers[17][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [21, 33], 1700, -1450, [buildingTiers[18][5]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][5], `Golden cookies appear <b>${goldenSpawnpercent}%</b> more often.<br>Golden cookie effects last <b>${buffDuration}%</b> longer.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [21, 33], 1850, -1400, [buildingTiers[19][5]]);
         
    
         //UTILITY TIER 3
-        CCSE.NewHeavenlyUpgrade(buildingTiers[1][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2250, -1000, [utilitySpecial[1]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[2][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2500, -1050, [buildingTiers[1][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[3][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2650, -1150, [buildingTiers[2][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[4][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2750, -1300, [buildingTiers[3][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[5][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -1500, [buildingTiers[4][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[6][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -1700, [buildingTiers[5][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[7][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -1900, [buildingTiers[6][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[8][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -2100, [buildingTiers[7][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[9][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -2300, [buildingTiers[8][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[10][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2800, -2500, [buildingTiers[9][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[11][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2700, -2600, [buildingTiers[10][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[12][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2500, -2600, [buildingTiers[11][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[13][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2500, [buildingTiers[12][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[14][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2300, [buildingTiers[13][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[1][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2250, -1000, [utilitySpecial[1]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[2][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2500, -1050, [buildingTiers[1][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[3][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2650, -1150, [buildingTiers[2][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[4][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2750, -1300, [buildingTiers[3][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[5][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -1500, [buildingTiers[4][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[6][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -1700, [buildingTiers[5][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[7][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -1900, [buildingTiers[6][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[8][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -2100, [buildingTiers[7][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[9][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -2300, [buildingTiers[8][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[10][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2800, -2500, [buildingTiers[9][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[11][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2700, -2600, [buildingTiers[10][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[12][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2500, -2600, [buildingTiers[11][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[13][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -2500, [buildingTiers[12][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[14][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -2300, [buildingTiers[13][6]]);
         
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[4], `You have a <b>1 in 1000</b> chance to gain a sugar lump each second.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -2300, [buildingTiers[9][6], buildingTiers[14][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[15][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -2100, [buildingTiers[14][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[16][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1900, [buildingTiers[15][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[17][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1700, [buildingTiers[16][6]]);
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[4], `You have a <b>1 in 777</b> chance to gain a sugar lump each second.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [29, 27], 2600, -2300, [buildingTiers[9][6], buildingTiers[14][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[15][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -2100, [buildingTiers[14][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[16][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -1900, [buildingTiers[15][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[17][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -1700, [buildingTiers[16][6]]);
         
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[5], `Wrinklers are <b>twice as likely</b> to appear.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2600, -1700, [buildingTiers[6][6], buildingTiers[17][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[18][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2400, -1550, [buildingTiers[17][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[19][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2300, -1450, [buildingTiers[18][6]]);
-        CCSE.NewHeavenlyUpgrade(buildingTiers[20][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [16, 0], 2150, -1400, [buildingTiers[19][6]]);
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[5], `Wrinklers are <b>four times as likely</b> to appear.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [24, 12], 2600, -1700, [buildingTiers[6][6], buildingTiers[17][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[18][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2400, -1550, [buildingTiers[17][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[19][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2300, -1450, [buildingTiers[18][6]]);
+        CCSE.NewHeavenlyUpgrade(buildingTiers[20][6], `Buffs are <b>${buffPower}%</b> stronger.<br>This does include debuffs!`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [27, 6], 2150, -1400, [buildingTiers[19][6]]);
 
 
         //UTILITY TIER 4
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[6], `You seem to always get the best deals! Buildings are <b>25% cheaper</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1400, [buildingTiers[20][5], buildingTiers[20][6]]);
-        CCSE.NewHeavenlyUpgrade(utilitySpecial[7], `Your clicks have a <b>.1% chance</b> to be boosted by a <b>factor of 100</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1200, [utilitySpecial[1], utilitySpecial[6]]);
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[6], `You seem to always get the best deals! Buildings are <b>99% cheaper</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1400, [buildingTiers[20][5], buildingTiers[20][6]]);
+        CCSE.NewHeavenlyUpgrade(utilitySpecial[7], `Your clicks have a <b>1% chance</b> to be boosted by a <b>factor of 1000</b>.`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [15, 9], 2000, -1200, [utilitySpecial[1], utilitySpecial[6]]);
 
         //Other neccessary upgrades
         Game.customWrinklerSpawnChance.push(function () {
             let spawnRate = 1;
-            if (Game.Has(utilitySpecial[5])) spawnRate *= 2;
+            if (Game.Has(utilitySpecial[5])) spawnRate *= 4;
             return spawnRate;
         });
 
         Game.customModifyBuildingPrice.push(function () {
             let price = 1;
-            if (Game.Has(utilitySpecial[6])) price *= 0.75;
+            if (Game.Has(utilitySpecial[6])) price *= 0.01;
             return price;
         });
 
@@ -431,14 +431,33 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             let str = '';
             let amount = 1;
             Object.values(NGPAchievements).forEach((e) => {
-                if (Game.Achievements[e].won) {
+                if (Game.HasAchiev(e)) {
                     str += CCSE.MenuHelper.TinyIcon(Game.Achievements[e].icon);
                     amount++;
                 }
-            })
+            });
+            let lastDigit = amount % 10;
+            let lastTwoDigits = amount % 100;
+            if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+                amount = amount.toString() + "th";
+            } else {
+                switch (lastDigit) {
+                    case 1:
+                        amount = amount.toString() + "st";
+                        break;
+                    case 2:
+                        amount = amount.toString() + "nd";
+                        break;
+                    case 3:
+                        amount =  amount.toString() + "rd";
+                        break;
+                    default:
+                        amount =  amount.toString() + "th";
+                }
+            }
             return ('<div style="text-align:center;">' +
             str + '<br>' +
-            'You are on your <b>' + amount +'. journey</b> to uncover the truth about cookies.<br>' +
+            'You are on your <b>' + amount + ' journey</b> to uncover the truth about cookies.<br>' +
             'You can start another journey once you\'ve purchased all heavenly upgrades.<br>'+
             '<div class="line"></div>'+
             'All <b>heavenly upgrades</b> will be sacrificed.<br>All your <b>prestige</b> will be sacrificed.<br>All <b>cookie related stats</b> will be reset.' +
@@ -556,7 +575,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         if (Game.Has(sugarLumpSpecial[6])) Game.Unlock('Golden summoner');
         goldenSummoner.priceLumps = Game.lumps > 1 ? Game.lumps : 1;
         if (Game.Has(utilitySpecial[1])) Game.Unlock('New Game Plus');
-        if (Game.Has(utilitySpecial[4]) && Game.T%(Game.fps) === 0 && Math.random() < pointOnePercent) Game.gainLumps(1);
+        if (Game.Has(utilitySpecial[4]) && Game.T%(Game.fps) === 0 && Math.random() < 1 / 777) Game.gainLumps(1);
     });
 
    Game.registerHook('cps', function(cps) {
@@ -582,7 +601,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         for (let i = 1; i <= Object.keys(buildingTiers).length; i++) {
             if(buildingTiers[i][4] && Game.Has(buildingTiers[i][4])) cpcMultiplier *= 1 + toPercent(Game.Objects[buildingTiers[i][0]].level);
         }
-        if (Game.Has(utilitySpecial[7]) && Math.random() < pointOnePercent) cpcMultiplier *= 100;
+        if (Game.Has(utilitySpecial[7]) && Math.random() < onePercent) cpcMultiplier *= 1_000;
         return cpc * cpcMultiplier;
     });
 
@@ -593,7 +612,6 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             if (Game.Upgrades[i].pool == 'prestige') {
                 Game.Upgrades[i].basePrice = Math.ceil(Game.Upgrades[i].basePrice * (heavenlyUpgradePow ** ngpPriceIncrease));
             }
-        //newGamePlus.descFunc();
         }
        if (Game.Has(utilitySpecial[1])) {
             //Set maxduration for every buff
@@ -613,7 +631,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.102', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.103', [19, 7], 6);
 
 }
 
