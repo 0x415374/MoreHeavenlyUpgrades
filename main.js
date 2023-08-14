@@ -3,7 +3,7 @@
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.103';
+MoreHeavenlyUpgradesRemastered.version = '2.106';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
 //debug
@@ -593,7 +593,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             if (slots[1] === -1) cpsMultiplier *= 2 * atheismMultiplier;
             if (slots[2] === -1) cpsMultiplier *= 1 * atheismMultiplier;
         }
-        cpsMultiplier *= ((1 + toPercent(NGPCpsBuffPercent)) ** calculateNGPCycle());
+        if (Game.ascensionMode != 1) cpsMultiplier *= ((1 + toPercent(NGPCpsBuffPercent)) ** calculateNGPCycle());
         return cps * cpsMultiplier;
     });
 
@@ -632,7 +632,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.103', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.106', [19, 7], 6);
 
 }
 
