@@ -3,7 +3,7 @@
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.106';
+MoreHeavenlyUpgradesRemastered.version = '2.110';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
 //debug
@@ -533,9 +533,9 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                 split.splice(1, 0, '\n\t\tif (Game.Has("' + buildingTiers[keys[i]][6] + '")) pow *= ' + (1 + toPercent(buffPower)).toString());
             }
             split[0] += '\t\t{'
-            var modifiedFunctionString = split.join('');
+            let modifiedFunctionString = split.join('');
             buffedBuffFunctionsStrings.push(modifiedFunctionString);
-            var modifiedFunction = eval('(' + modifiedFunctionString + ')');
+            let modifiedFunction = eval('(' + modifiedFunctionString + ')');
             Game.buffTypes[i].func = modifiedFunction;
         }
 
@@ -607,32 +607,80 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     Game.registerHook('check', function () {
-        if (Game.Upgrades[sugarLumpSpecial[1]].basePrice !== heavenlyUpgradeBase) return;
-        let ngpPriceIncrease = calculateNGPCycle() * NGPMhurPriceIncrease;
-        for (let i in Game.Upgrades) {
-            if (Game.Upgrades[i].pool == 'prestige') {
-                Game.Upgrades[i].basePrice = Math.ceil(Game.Upgrades[i].basePrice * (heavenlyUpgradePow ** ngpPriceIncrease));
+        if (Game.Upgrades[sugarLumpSpecial[1]].basePrice === heavenlyUpgradeBase) {
+            let ngpPriceIncrease = calculateNGPCycle() * NGPMhurPriceIncrease;
+            for (let i in Game.Upgrades) {
+                if (Game.Upgrades[i].pool == 'prestige') {
+                    Game.Upgrades[i].basePrice = Math.ceil(Game.Upgrades[i].basePrice * (heavenlyUpgradePow ** ngpPriceIncrease));
+                }
             }
         }
-       if (Game.Has(utilitySpecial[1])) {
+        /* lock all NG+ Achievements for testing purposes
+        const keys = Object.keys(NGPAchievements).sort((a, b) => a - b);
+        for (let i = 0; i < keys.length; i++) {
+            Game.Achievements[NGPAchievements[keys[i]]].won = 0
+        }
+        */
+        if (Game.Has(utilitySpecial[1])) {
             //Set maxduration for every buff
             for (let i = 0; i < buffedBuffFunctionsStrings.length; i++) {
                 let functionString = buffedBuffFunctionsStrings[i]
-                var modifiedFunctionString = functionString.replace('add:true', 'max:true');
-                var modifiedFunction = eval('(' + modifiedFunctionString + ')');
+                let modifiedFunctionString = functionString.replace('add:true', 'max:true');
+                let modifiedFunction = eval('(' + modifiedFunctionString + ')');
                 Game.buffTypes[i].func = modifiedFunction;
             }
         } else {
             for (let i = 0; i < buffedBuffFunctionsStrings.length; i++) {
                 let functionString = buffedBuffFunctionsStrings[i];
-                var unmodifiedFunction = eval('(' + functionString + ')');
+                let unmodifiedFunction = eval('(' + functionString + ')');
                 Game.buffTypes[i].func = unmodifiedFunction;
             }
        }
     });
 
+    MoreHeavenlyUpgradesRemastered.save = function() {
+		let saveFile = {
+			Upgrades: {},
+			Achievements: {}
+		}
+		Object.keys(buildingTiers).forEach((tier) => {
+			let prestigeUpgradeList = buildingTiers[tier];
+			for(let i = 1; i < prestigeUpgradeList.length; i++) {
+				let name = buildingTiers[tier][i];
+				saveFile.Upgrades[name] = CCSE.config.Upgrades[name];
+			}
+		});
+		Object.keys(sugarLumpSpecial).forEach((tier) => {
+			let upgrade = sugarLumpSpecial[tier];
+			saveFile.Upgrades[upgrade] = CCSE.config.Upgrades[upgrade];
+		});
+		Object.keys(cpsSpecial).forEach((tier) => {
+			let upgrade = cpsSpecial[tier];
+			saveFile.Upgrades[upgrade] = CCSE.config.Upgrades[upgrade];
+		});
+		Object.keys(utilitySpecial).forEach((tier) => {
+			let upgrade = utilitySpecial[tier];
+			saveFile.Upgrades[upgrade] = CCSE.config.Upgrades[upgrade];
+		});
+		Object.keys(NGPAchievements).forEach((tier) => {
+			let achievement = NGPAchievements[tier];
+			saveFile.Achievements[achievement] = CCSE.config.Achievements[achievement];
+		});
+		return JSON.stringify(saveFile);
+	}
+
+	MoreHeavenlyUpgradesRemastered.load = function(json) {
+		let saveFile = JSON.parse(json);
+		Object.keys(saveFile).forEach((category) => {
+			Object.keys(saveFile[category]).forEach((e) => {
+				CCSE.config[category][e] = saveFile[category][e];
+			});
+		});
+	}
+
+
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.106', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.110', [19, 7], 6);
 
 }
 

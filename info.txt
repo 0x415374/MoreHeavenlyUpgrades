@@ -3,9 +3,9 @@
  "ID": "More Heavenly Upgrades Remastered",
  "Author": "0x415374",
  "Description": "This mod basically adds a ton of new heavenly upgrades, containing three branches: Utility, Cps and Sugar Lumps. It's based on the 'More heavenly upgrades' mod by Ruby-Chan",
- "ModVersion": 2.1,
+ "ModVersion": 2.110,
  "GameVersion": 2.052,
- "Date": "03/08/2023",
+ "Date": "08/10/2023",
  "Dependencies": [
   "CCSE"
  ],
