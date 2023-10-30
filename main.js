@@ -3,13 +3,14 @@
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.110';
+MoreHeavenlyUpgradesRemastered.version = '2.111';
 MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
 
 //debug
 //Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
 
 MoreHeavenlyUpgradesRemastered.launch = function() {
+    let forcedLuckTimer = 1_000_000;
     let cpsUpgrade = 0;
     let lumpUpgrade = 0;
     let utilityUpgrade = 0;
@@ -341,7 +342,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         // Utility Block
         // UTILITY TIER 1
-        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!<u>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [9, 9], 2000, -1000, ['Legacy'], function () {
+        let allLuckies = CCSE.NewHeavenlyUpgrade(utilitySpecial[1], `Redefines what 'luck' actaually means.<br>Unlocks any missing instances of: 'Lucky digit', 'Lucky number' and 'Lucky payout' for their respective costs.<br>Unlocks the 'New Game Plus' switch.<br><u>Prohibits buff durations from stacking!</u><q>It feels like this forces specific luck based events...</q>`, heavenlyUpgradeBase * (heavenlyUpgradePow ** utilityUpgrade++), [9, 9], 2000, -1000, ['Legacy'], function () {
             if (!Game.Has('Lucky digit')) Game.Upgrades['Lucky digit'].buy();
             if (!Game.Has('Lucky number')) Game.Upgrades['Lucky number'].buy();
             if (!Game.Has('Lucky payout')) Game.Upgrades['Lucky payout'].buy();
@@ -559,6 +560,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
         //Readjust Heavenly Cookies on every reset
         Game.customAscend.push(function realHeavenlyChips() {
+            if (Game.ascensionMode === 1) return;
             let sumOfHeavenlyChips = 0;
             for (let i in Game.Upgrades) {
                 if (Game.Upgrades[i].pool == 'prestige' && Game.Has(Game.Upgrades[i].name)) {
@@ -577,6 +579,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         goldenSummoner.priceLumps = Game.lumps > 1 ? Game.lumps : 1;
         if (Game.Has(utilitySpecial[1])) Game.Unlock('NewGamePlus');
         if (Game.Has(utilitySpecial[4]) && Game.T%(Game.fps) === 0 && Math.random() < 1 / 777) Game.gainLumps(1);
+        if (Game.T%(Game.fps) === 0 && forcedLuckTimer > 0 && Game.Has(utilitySpecial[1])) forcedLuckTimer--;
     });
 
    Game.registerHook('cps', function(cps) {
@@ -607,6 +610,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     Game.registerHook('check', function () {
+        if (forcedLuckTimer === 0 && !Game.HasAchiev('Just plain lucky') && Game.Has(utilitySpecial[1])) Game.Win('Just plain lucky');
         if (Game.Upgrades[sugarLumpSpecial[1]].basePrice === heavenlyUpgradeBase) {
             let ngpPriceIncrease = calculateNGPCycle() * NGPMhurPriceIncrease;
             for (let i in Game.Upgrades) {
@@ -615,7 +619,8 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                 }
             }
         }
-        /* lock all NG+ Achievements for testing purposes
+        /* 
+        //lock all NG+ Achievements for testing purposes
         const keys = Object.keys(NGPAchievements).sort((a, b) => a - b);
         for (let i = 0; i < keys.length; i++) {
             Game.Achievements[NGPAchievements[keys[i]]].won = 0
@@ -641,7 +646,8 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     MoreHeavenlyUpgradesRemastered.save = function() {
 		let saveFile = {
 			Upgrades: {},
-			Achievements: {}
+			Achievements: {},
+            ForcedLuck: forcedLuckTimer.toString()
 		}
 		Object.keys(buildingTiers).forEach((tier) => {
 			let prestigeUpgradeList = buildingTiers[tier];
@@ -670,17 +676,40 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 	}
 
 	MoreHeavenlyUpgradesRemastered.load = function(json) {
-		let saveFile = JSON.parse(json);
-		Object.keys(saveFile).forEach((category) => {
-			Object.keys(saveFile[category]).forEach((e) => {
-				CCSE.config[category][e] = saveFile[category][e];
-			});
-		});
+        let saveFile = JSON.parse(json);
+        Object.keys(saveFile.Upgrades).forEach((e) => {
+            CCSE.config.Upgrades[e] = saveFile.Upgrades[e];
+        });
+        Object.keys(saveFile.Achievements).forEach((e) => {
+            CCSE.config.Achievements[e] = saveFile.Achievements[e];
+        });
+        forcedLuckTimer = parseInt(saveFile.ForcedLuck);
 	}
 
+    MoreHeavenlyUpgradesRemastered.resetUpgrades = function() {
+        for (let i in Game.Upgrades) {
+            if (Game.Upgrades[i].pool == 'prestige' && Game.Has(Game.Upgrades[i].name)) {
+                Game.Lock(Game.Upgrades[i].name);
+            }
+        }
+    }  
+
+    Game.customOptionsMenu.push(() => CCSE.AppendCollapsibleOptionsMenu(MoreHeavenlyUpgradesRemastered.name,
+        '<div class="listing">' +
+        CCSE.MenuHelper.ActionButton("MoreHeavenlyUpgradesRemastered.resetUpgrades();", "Locks all Heavenly Upgrades") +
+        '<label>Consider this if you have negative Heavenly Chips when ascending.</label></div>'
+    ));
+
+    Game.customStatsMenu.push(() => {
+        let div = document.createElement('div');
+        let str = '<b>Waiting for Luck to kick in:</b> ' + forcedLuckTimer;
+        div.className = 'listing';
+        div.innerHTML = str;
+        CCSE.AppendStatsGeneral(div);
+    });
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.110', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.111', [19, 7], 6);
 
 }
 
