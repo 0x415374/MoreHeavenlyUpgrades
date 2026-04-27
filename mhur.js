@@ -4,7 +4,7 @@
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
 MoreHeavenlyUpgradesRemastered.version = '2.111';
-MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
+MoreHeavenlyUpgradesRemastered.GameVersion = '2.058';
 
 //debug
 //Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
