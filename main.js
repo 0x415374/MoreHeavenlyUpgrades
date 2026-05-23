@@ -1,16 +1,16 @@
-//Created by 0x415374
 //Based on MoreHeavenlyUpgrades by RubyChan42
+//Created by startsWith('A')
 
 if (MoreHeavenlyUpgradesRemastered === undefined) var MoreHeavenlyUpgradesRemastered = {};
 MoreHeavenlyUpgradesRemastered.name = 'More Heavenly Upgrades Remastered';
-MoreHeavenlyUpgradesRemastered.version = '2.111';
-MoreHeavenlyUpgradesRemastered.GameVersion = '2.052';
+MoreHeavenlyUpgradesRemastered.version = '2.113';
+MoreHeavenlyUpgradesRemastered.GameVersion = '2.053';
 
 //debug
 //Game.Notify('More Heavenly Upgrades Remastered loaded', '', [19, 7], 6);
 
 MoreHeavenlyUpgradesRemastered.launch = function() {
-    let forcedLuckTimer = 1_000_000;
+    let forcedLuckTimer = 2_000_000;
     let cpsUpgrade = 0;
     let lumpUpgrade = 0;
     let utilityUpgrade = 0;
@@ -111,6 +111,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         '6': 'New Game+6',
         '7': 'New Game+7',
     }
+
 
 
     //Helper functions
@@ -294,17 +295,17 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
 
 
         //Other necessary upgrades
-        goldenSummoner = CCSE.NewUpgrade('Golden summoner', 'Summons an amount of golden cookies equal to your stored sugar lumps', 0, [2, 7]);
+        goldenSummoner = CCSE.NewUpgrade('Golden summoner', 'Summons an amount of golden cookies equal to your stored sugar lumps. Up to 50 per use', 0, [2, 7]);
         goldenSummoner.priceLumps = 1;
         goldenSummoner.pool = 'toggle';
         goldenSummoner.canBuyFunc = function () { return Game.lumps > 0 };
-        goldenSummoner.clickFunction = Game.spendLump(1, 'Call on the Cookie Summoner!', function () {
-            let price = Game.lumps + 1;
+        goldenSummoner.clickFunction = Game.spendLump(0 , 'Call on the Cookie Summoner!', function () {
+            let price = Math.min(Game.lumps, 50);
             for (let i = 0; i < price; i++) {
                 let newShimmer = new Game.shimmer('golden');
                 newShimmer.spawnLead = 1;
             }
-            Game.lumps = 0;
+            Game.lumps -= price;
         });
 
 
@@ -427,7 +428,6 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             return price;
         });
 
-        //Other necessary upgrades
         newGamePlus = CCSE.NewUpgrade('NewGamePlus', 'Again!', 1, [24, 15]);
         newGamePlus.descFunc = function () { 
             let str = '';
@@ -523,7 +523,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
                     }
                 }
             }
-        };
+        }
 
         //Adjust Buffpow
         for (let i = 0; i < originalBuffFunctionsStrings.length; i++) {
@@ -555,7 +555,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
             let dropRate = 1;
             if (Game.Has(utilitySpecial[2])) dropRate *= 1 + toPercent(50);
             return dropRate;
-        })
+        });
 
 
         //Readjust Heavenly Cookies on every reset
@@ -576,7 +576,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     Game.registerHook('logic', function () {
         if (Game.Has(utilitySpecial[3]) && Game.Objects['Wizard tower']?.minigame?.magic && Game.Objects['Wizard tower']?.minigame?.magicPS) Game.Objects['Wizard tower'].minigame.magic += 0.002 - Game.Objects['Wizard tower'].minigame.magicPS;
         if (Game.Has(sugarLumpSpecial[6])) Game.Unlock('Golden summoner');
-        goldenSummoner.priceLumps = Game.lumps > 1 ? Game.lumps : 1;
+        goldenSummoner.priceLumps = Game.lumps > 1 ? Math.min(Game.lumps, 50) : 1;
         if (Game.Has(utilitySpecial[1])) Game.Unlock('NewGamePlus');
         if (Game.Has(utilitySpecial[4]) && Game.T%(Game.fps) === 0 && Math.random() < 1 / 777) Game.gainLumps(1);
         if (Game.T%(Game.fps) === 0 && forcedLuckTimer > 0 && Game.Has(utilitySpecial[1])) forcedLuckTimer--;
@@ -683,7 +683,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
         Object.keys(saveFile.Achievements).forEach((e) => {
             CCSE.config.Achievements[e] = saveFile.Achievements[e];
         });
-        forcedLuckTimer = parseInt(saveFile.ForcedLuck);
+        forcedLuckTimer = isNaN(parseInt(saveFile.ForcedLuck)) ? forcedLuckTimer : parseInt(saveFile.ForcedLuck);
 	}
 
     MoreHeavenlyUpgradesRemastered.resetUpgrades = function() {
@@ -709,7 +709,7 @@ MoreHeavenlyUpgradesRemastered.launch = function() {
     });
 
     if (CCSE.ConfirmGameVersion(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered.version, MoreHeavenlyUpgradesRemastered.GameVersion)) Game.registerMod(MoreHeavenlyUpgradesRemastered.name, MoreHeavenlyUpgradesRemastered);
-    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.111', [19, 7], 6);
+    Game.Notify('More Heavenly Upgrades Remastered loaded', 'Version 2.112', [19, 7], 6);
 
 }
 
