@@ -2,8 +2,9 @@
 //Based on MoreHeavenlyUpgrades by RubyChan42
 //IMPORTANT: Always remove the thumbnail before publishing!
 
-if (MoreHeavenlyUpgradesRemastered === undefined)
+if (typeof MoreHeavenlyUpgradesRemastered === "undefined") {
   var MoreHeavenlyUpgradesRemastered = {};
+}
 MoreHeavenlyUpgradesRemastered.name = "More Heavenly Upgrades Remastered";
 MoreHeavenlyUpgradesRemastered.version = "2.113";
 MoreHeavenlyUpgradesRemastered.GameVersion = "2.053";
